@@ -2,8 +2,8 @@ from django.conf.urls.defaults import patterns, include, url
 from django.conf import settings
 import os
 
-urlpatterns = patterns('.views',
-    url(r'^auth$', 'auth', name='auth-view'),
+urlpatterns = patterns('auth.views',
+    url(r'^login$', 'login', name='login-view'),
     url(r'^register$', 'register', name='register-view'),
     # url(r'^dash2012/', include('dash2012.foo.urls')),
 
