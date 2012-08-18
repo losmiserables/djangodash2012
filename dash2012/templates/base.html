@@ -28,7 +28,7 @@
                 </div>
                 <div class="clear"></div>
             </div>
-
+            {% if user.is_authenticated %}
             <div id="content">
                 <div class="sidebar">
                     <ul class="nav">
@@ -37,6 +37,7 @@
                     </ul>
 
                 </div>
+            {% endif %}
 
                 <div class="main-content">
                     {% block content %} {% endblock %}
