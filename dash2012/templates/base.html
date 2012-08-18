@@ -17,8 +17,8 @@
             <div id="header">
                 <a class="logo"><img alt="cloudfish" src="{{STATIC_URL}}img/logo.png"/></a>
                 <div class="welcome-user">
-                    {% if request.user %}
-                        <span class="username">{{ greeting }} {{ request.user.username }}</span>
+                    {% if user.is_authenticated %}
+                        <span class="username">{{ greeting }} {{ user.username }}</span>
                         <span class="logout"><a href="{% url logout-view %}">logout</a></span>
                     {% else %}
                         <span class="login"><a href="{% url login-view %}">login</a></span>
@@ -31,7 +31,7 @@
             <div id="content">
                 <div class="sidebar">
                     <ul class="nav">
-                        <li><a href="/" class="{{ active_servers }}">My servers</a></li>
+                        <li><a href="{% url myservers-view %}" class="{{ active_servers }}">My servers</a></li>
                         <li><a href="{% url myaccount-view %}" class="{{ active_account }}">My account</a></li>
                     </ul>
 

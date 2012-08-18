@@ -12,12 +12,12 @@ def login(r):
 
         if user is not None:
             auth_login(r, user)
-            return HttpResponseRedirect(reverse('myaccount-view'))
+            return HttpResponseRedirect(reverse('myservers-view'))
 
     return render(r, 'auth.html')
 
 def register(r):
-    return render(r, 'index.html')
+    return render(r, 'index_loggedin.html')
 
 def logout(request):
     auth_logout(request)
