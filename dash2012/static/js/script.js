@@ -10,8 +10,20 @@ function centerHeight (element, outer) {
 
 $(document).ready(function() {
     $('.actions-trigger').click(function() {
+        $('.actions-trigger').removeClass('open');
+        $('.actions-dropdown').hide();
         $(this).toggleClass('open');
         $(this).next('.actions-dropdown').toggle('fast');
+    });
+
+    $(document).click(function(){
+        $('.actions-dropdown').hide();
+        $('.actions-trigger').removeClass('open');
+
+    });
+
+    $(".actions-trigger").click(function(e){
+        e.stopPropagation();
     });
 
 });
