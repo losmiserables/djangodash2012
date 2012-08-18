@@ -6,21 +6,42 @@
 <div class="popup-holder">
     <h2>Add server</h2>
     <form class="popup-form">
+        <div class="form-row create-onservice">
+            <input type="radio"/>
+            <label>Amazon</label>
+            <input type="radio"/>
+            <label>Rackspace</label>
+
+        </div>
         <div class="form-row">
             <label>Name:</label>
             <input type="text"/>
         </div>
         <div class="form-row">
-            <label>Name:</label>
-            <input type="text"/>
+            <label>Image:</label>
+            <select>
+                <option>Aloka (saved)</option>
+                <option>Eikelokura (saved)</option>
+                <option>makakaloka</option>
+            </select>
+        </div>
+        <div class="form-row">
+            <label>Size:</label>
+            <select>
+                <option>Mem: 1.2Gb Disk: 80Gb</option>
+                <option>Mem: 1.7Gb Disk: 160Gb</option>
+                <option>Mem: 4.0Gb Disk: 750Gb</option>
+            </select>
+        </div>
+
+        <div class="popup-actions">
+            <a class="popup-cancel btn">Cancel</a>
+            <a class="popup-save blue-btn">Add</a>
+            <div class="clear"></div>
         </div>
 
     </form>
-    <div class="popup-actions">
-        <a class="popup-cancel btn">Cancel</a>
-        <a class="popup-save blue-btn">Add</a>
-        <div class="clear"></div>
-    </div>
+
     <div class="clear"></div>
 </div>
 

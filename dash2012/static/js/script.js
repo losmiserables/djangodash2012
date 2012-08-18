@@ -57,16 +57,19 @@ $(document).ready(function() {
     }));
 
     $('.all-filter').click(function() {
+        $('.select-trigger').text('All services ▼');
         $('.amazon-row').fadeIn('fast');
         $('.rackspace-row').fadeIn('fast');
 
     });
     $('.amazon-filter').click(function() {
+        $('.select-trigger').text('Amazon ▼');
         $('.rackspace-row').hide();
         $('.amazon-row').fadeIn('fast');
 
     });
     $('.rackspace-filter').click(function() {
+        $('.select-trigger').text('Rackspace ▼');
         $('.amazon-row').hide();
         $('.rackspace-row').fadeIn('fast');
 
