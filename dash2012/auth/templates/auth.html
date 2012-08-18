@@ -1,12 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <div class="auth-block">
+        <h1>Login</h1>
+        <form action="{% url login-view %}" method="POST">
+            {% csrf_token %}
 
-    <form action="{% url login-view %}" method="POST">
-        {% csrf_token %}
-        Login: <input type="text" name="username"/> <br/>
-        Password: <input type="password" name="password"/>
-        <input type="submit" name="Login">
-    </form>
+            <div class="form-row">
+                <label for="email">Email:</label>
+                <input required type="email" name="email" id="email"/>
+            </div>
+
+            <div class="form-row">
+                <label for="password">Password:</label>
+                <input required type="password" name="password" id="password"/>
+            </div>
+
+            <button type="submit" name="Login" class="blue-btn">Go fish!</button>
+            <div class="clear"></div>
+        </form>
+    </div>
 
 {%  endblock %}
