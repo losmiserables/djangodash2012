@@ -15,7 +15,7 @@
     <body>
         <div class="wrap">
             <div id="header">
-                <a class="logo"><img alt="cloudfish" src="{{STATIC_URL}}img/logo.png"/></a>
+                <a href="/" class="logo"><img alt="cloudfish" src="{{STATIC_URL}}img/logo.png"/></a>
                 <div class="welcome-user">
                     {% if user.is_authenticated %}
                         <span class="username">{{ greeting }} {{ user.username }}</span>
