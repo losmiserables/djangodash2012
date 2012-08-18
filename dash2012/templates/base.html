@@ -16,8 +16,13 @@
             <div id="header">
                 <a class="logo"><img alt="cloudfish" src="{{STATIC_URL}}img/logo.png"/></a>
                 <div class="welcome-user">
-                    <span class="username">Hello daltonmatos!</span>
-                    <span class="logout"><a href="">logout</a></span>
+                    {% if request.user %}
+                        <span class="username">{{ greeting }} {{ request.user.username }}</span>
+                        <span class="logout"><a href="{% url logout-view %}">logout</a></span>
+                    {% else %}
+                        <span class="login"><a href="{% url login-view %}">login</a></span>
+                    {% endif %}
+
                 </div>
                 <div class="clear"></div>
             </div>
