@@ -6,7 +6,7 @@ from django.conf.urls.defaults import patterns, include, url
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'dash2012.views.home', name='home'),
+    url(r'^$', 'dash2012.views.wait', name='wait'),
     # url(r'^dash2012/', include('dash2012.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
