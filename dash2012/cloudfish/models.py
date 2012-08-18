@@ -1,6 +1,6 @@
 from django.db import models
 from cloudfish import SUPPORTED_CLOUDS
-from account.models import Account
+from auth.models import Account
 
 class Cloud(models.Model):
 

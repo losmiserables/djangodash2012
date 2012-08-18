@@ -4,8 +4,9 @@ import os
 
 urlpatterns = patterns('',
     url(r'^$', 'cloudfish.views.index', name='index-view'),
+    url(r'^account$', 'cloudfish.views.account', name='myaccount-view'),
 
     # Account App
-    url(r'^account/', include('account.urls')),
+    url(r'^auth/', include('auth.urls')),
 
 )
