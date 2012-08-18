@@ -3,7 +3,8 @@ from django.conf import settings
 import os
 
 urlpatterns = patterns('',
-    url(r'^$', 'dash2012.views.wait', name='wait'),
+    url(r'^$', 'cloudfish.views.index', name='index-view'),
+    url(r'^login$', 'cloudfish.views.login', name='login-view'),
     # url(r'^dash2012/', include('dash2012.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
