@@ -58,7 +58,7 @@ h4 {font-size: 18px;}
     margin: 0 auto;
 }
 
-#header { margin: 30px 0 70px; }
+#header { margin: 30px 0 55px; }
 .logo {
     float: left;
 }
@@ -271,7 +271,7 @@ h4 {font-size: 18px;}
 
 .select-holder .select-dropdown li a:hover { background: #444; }
 
-.blue-btn {
+.blue-btn, .btn {
     background: #44b2cd;
     color: #fff;
     cursor: pointer;
@@ -293,3 +293,48 @@ h4 {font-size: 18px;}
 
 .blue-btn:hover { background: #3aa2bc; }
 .blue-btn:active { background: #378598; }
+
+.btn { background: #d0d0d0; }
+.btn:hover { background: #c3c3c3; }
+.btn:active { background: #c0c0c0; }
+
+/* popup */
+
+.popup-overlay {
+    background: #666;
+    display: none;
+    position: fixed;
+    z-index: 900;
+    top: 0;
+    bottom:0;
+    left: 0;
+    right: 0;
+
+    opacity:0.50;
+    filter: alpha(opacity = 50);
+    -moz-opacity: 0.40;
+    -webkit-opacity: 0.40;
+}
+
+.popup-holder {
+    display: none;
+    background: #fff;
+    min-width: 250px;
+    max-width: 860px;
+    padding: 10px;
+    position: absolute;
+    z-index: 9999;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+
+}
+.popup-holder h2 { font-size: 24px; }
+
+.popup-actions {float: right;}
+.popup-actions .blue-btn {margin-right: 0;}
