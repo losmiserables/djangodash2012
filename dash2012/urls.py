@@ -4,12 +4,8 @@ import os
 
 urlpatterns = patterns('',
     url(r'^$', 'cloudfish.views.index', name='index-view'),
-    url(r'^login$', 'cloudfish.views.login', name='login-view'),
-    # url(r'^dash2012/', include('dash2012.foo.urls')),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    # Account App
+    url(r'^account/', include('account.urls')),
 
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
 )

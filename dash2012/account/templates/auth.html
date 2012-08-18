@@ -3,7 +3,7 @@
 {% block content %}
 
 
-    <form action="{% url login-view %}" method="POST">
+    <form action="{% url auth-view %}" method="POST">
         {% csrf_token %}
         Login: <input type="text" name="username"/> <br/>
         Password: <input type="password" name="password"/>
