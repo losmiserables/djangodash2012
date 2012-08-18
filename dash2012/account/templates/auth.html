@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    <form action="{% url auth-view %}" method="POST">
+        {% csrf_token %}
+        Login: <input type="text" name="username"/> <br/>
+        Password: <input type="password" name="password"/>
+        <input type="submit" name="Login">
+    </form>
+
+{%  endblock %}

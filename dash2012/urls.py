@@ -3,12 +3,9 @@ from django.conf import settings
 import os
 
 urlpatterns = patterns('',
-    url(r'^$', 'dash2012.views.wait', name='wait'),
-    # url(r'^dash2012/', include('dash2012.foo.urls')),
+    url(r'^$', 'cloudfish.views.index', name='index-view'),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    # Account App
+    url(r'^account/', include('account.urls')),
 
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
 )
