@@ -1,4 +1,6 @@
-djangodash2012
+CloudFish
 ==============
 
-Project for the Django Dash 2012
+**CloudFish** is an application to help you manage your cloud infrastructure.
+
+It currently supports [Amazon Web Services] (http://aws.amazon.com) and [Rackspace Open Cloud] (http://www.rackspace.com).

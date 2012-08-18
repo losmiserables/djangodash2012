@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 
-def auth(r):
+def login(r):
     return render(r, 'auth.html')
 
 def register(r):
