@@ -8,6 +8,10 @@ def index(request):
     return render(request, 'index.html')
 
 
-@login_required(login_url='/auth/login')
+@login_required
 def account(request):
     return render(request, 'account.html', {'active_account': 'active'})
+
+@login_required
+def servers(request):
+    return render(request, 'servers.html', {'active_servers': 'active'})
