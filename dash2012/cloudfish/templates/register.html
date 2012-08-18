@@ -3,10 +3,17 @@
 
 {%  block content %}
 
+    <h1 xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">Register your account</h1>
+    <hr/>
     <form action="{% url register-view %}" method="post">
+    {% csrf_token %}
 
-    Name: <input type="text" name="">
+    <p>Name: <input type="text" name="name"></p>
+    <p>E-mail: <input type="text" name="email"></p>
+        <p>Password: <input type="text" name="password"></p>
+        <p>Confirm Password: <input type="text" name="password"></p>
 
+    <input type="submit" name="submit">
 
     </form>
 

@@ -17,8 +17,11 @@ def login(r):
     return render(r, 'auth.html')
 
 def register(r):
-    return render(r, 'index_loggedin.html')
+    if r.POST:
+
+        pass
+    return render(r, 'register.html')
 
 def logout(request):
     auth_logout(request)
-    return render(request, 'index.html')
+    return HttpResponseRedirect(reverse('index-view'))
