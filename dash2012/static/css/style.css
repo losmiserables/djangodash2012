@@ -379,10 +379,12 @@ h4 {font-size: 18px;}
 /* AUTH */
 
 .auth-block {
-    background: #fff;
     width: 300px;
-    padding: 10px;
     margin: 0 auto;
+}
+.auth-block form {
+    background: #fff;
+    padding: 30px 50px;
 
     border-radius: 5px;
     -moz-border-radius: 5px;
@@ -396,3 +398,5 @@ h4 {font-size: 18px;}
 .auth-block h1 { margin-bottom: 20px; }
 
 .auth-block label {font-size: 14px;}
+
+button.blue-btn { float: right; padding: 6px 8px; margin-right: 0; }

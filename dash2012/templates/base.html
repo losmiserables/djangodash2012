@@ -39,9 +39,9 @@
                 </div>
             {% endif %}
 
-                <div class="main-content">
+                {% if user.is_authenticated %} <div class="main-content">{% endif %}
                     {% block content %} {% endblock %}
-                </div>
+                {% if user.is_authenticated %} </div>{% endif %}
 
                 <div class="clear"></div>
             </div>
