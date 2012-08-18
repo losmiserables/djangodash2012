@@ -29,6 +29,7 @@
             </div>
 
             <div id="content">
+                {% if user.is_authenticated %}
                 <div class="sidebar">
                     <ul class="nav">
                         <li><a href="{% url myservers-view %}" class="{{ active_servers }}">My servers</a></li>
@@ -36,6 +37,7 @@
                     </ul>
 
                 </div>
+            {% endif %}
 
                 <div class="main-content">
                     {% block content %} {% endblock %}
