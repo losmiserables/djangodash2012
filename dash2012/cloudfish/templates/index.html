@@ -2,6 +2,45 @@
 
 {% block content %}
 
-
+    <table class="server-list main-table" cellspacing="0" cellpadding="0">
+        <thead>
+            <tr>
+                <th style="width: 16px;"><span class="cloud-icon"></span></th>
+                <th>Server name</th>
+                <th style="width: 120px">IP</th>
+                <th>Image</th>
+                <th>RAM</th>
+                <th>Status</th>
+                <th style="width: 50px">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="amazon-icon"></span></td>
+                <td>Boladão</td>
+                <td>255.255.255.255</td>
+                <td>Pikachu</td>
+                <td>1024Mb</td>
+                <td><span class="server-status on">&#9679;</span> Running</td>
+                <td>
+                    <div class="server-actions">
+                        <a class="actions-trigger">&#9660;</a>
+                        <ul class="actions-dropdown">
+                            <li><a>Stop</a></li>
+                            <li><a>Remove</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr class="alt">
+                <td><span class="rackspace-icon"></span></td>
+                <td>Boladão</td>
+                <td>255.255.255.255</td>
+                <td>Pikachu</td>
+                <td>1024Mb</td>
+                <td><span class="server-status off">&#9679;</span>Running</td>
+            </tr>
+        </tbody>
+    </table>
 
 {%  endblock %}

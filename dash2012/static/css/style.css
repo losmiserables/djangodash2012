@@ -86,3 +86,122 @@ h4 {font-size: 18px;}
     bottom: 0;
     width: 100%;
 }
+
+.sidebar {
+    border-right: 1px solid #d3d3d3;
+    float: left;
+    width: 180px;
+    height: 400px;
+}
+
+.main-content {
+    float: left;
+    margin-left: 10px;
+    width: 769px;
+}
+
+.nav li a {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 4px 0px 4px 10px;
+    text-decoration: none;
+}
+.nav li a.active { background: #4b4b4b; color: #fff; }
+
+.main-table {width: 100%;}
+
+.main-table th {
+    background: #d3d3d3;
+    font-size: 14px;
+    padding: 4px 8px;
+}
+
+.main-table tr td {
+    background: #f6f6f6;
+    padding: 6px 8px;
+
+    transition: background .15s ease-in-out;
+    -moz-transition: background .15s ease-in-out;
+    -webkit-transition: background .15s ease-in-out;
+}
+.main-table tr.alt td {
+    background: #f0f0f0;
+}
+
+.main-table tr:hover td { background: #fcfcfc; }
+.main-table tr.alt:hover td { background: #fbfbfb; }
+
+.cloud-icon, .amazon-icon, .rackspace-icon {
+    background: url(../../static/img/sprite-icons.png) no-repeat;
+}
+.cloud-icon {
+    background-position: 0 0;
+    display: block;
+    width: 17px;
+    height: 11px;
+}
+
+.amazon-icon {
+    background-position: 0 -24px;
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+.rackspace-icon {
+    background-position: 0 -53px;
+    display: block;
+    width: 15px;
+    height: 16px;
+}
+.server-status { font-size: 18px; line-height: 12px; margin-right: 6px; }
+.server-status.on {color: #5dbe16;}
+.server-status.off {color: #d93b3b;}
+
+.server-actions { position: relative; }
+.server-actions .actions-trigger {
+    background: #d4d4d4;
+    color: #606060;
+    cursor: pointer;
+    display: block;
+    height: 16px;
+    padding: 0 5px;
+    width: 8px;
+
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+
+    transition: background .10s ease-in-out;
+    -moz-transition: background .10s ease-in-out;
+    -webkit-transition: background .10s ease-in-out;
+}
+
+.server-actions .actions-trigger:hover,
+.server-actions .actions-trigger.open {
+    background: #555;
+    color: #fff;
+}
+
+.server-actions .actions-dropdown {
+    background: #555;
+    display: none;
+    position: absolute;
+    padding: 10px 0;
+    right: 32px;
+    top: 15px;
+    z-index: 200;
+    min-width: 80px;
+
+    border-radius: 3px 0 3px 3px;
+    -webkit-border-radius: 3px 0 3px 3px;
+    -moz-border-radius: 3px 0 3px 3px;
+}
+
+.server-actions .actions-dropdown li a {
+    display: block;
+    cursor: pointer;
+    color: #fff;
+    padding: 4px 10px;
+}
+.server-actions .actions-dropdown li a:hover { background: #444; }
