@@ -4,6 +4,7 @@ import os
 
 urlpatterns = patterns('auth.views',
     url(r'^login$', 'login', name='login-view'),
+    url(r'^logout$', 'logout', name='logout-view'),
     url(r'^register$', 'register', name='register-view'),
     # url(r'^dash2012/', include('dash2012.foo.urls')),
 
