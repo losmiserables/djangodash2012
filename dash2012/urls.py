@@ -1,11 +1,8 @@
 from django.conf.urls.defaults import patterns, include, url
-
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.conf import settings
+import os
 
 urlpatterns = patterns('',
-    # Examples:
     url(r'^$', 'dash2012.views.wait', name='wait'),
     # url(r'^dash2012/', include('dash2012.foo.urls')),
 
