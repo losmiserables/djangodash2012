@@ -2,6 +2,18 @@
 
 {% block content %}
 
+    <div class="toolbar">
+        <a class="add-server blue-btn">+ Add</a>
+        <div class="service-filter select-holder">
+            <a class="select-trigger">All services &#9660;</a>
+            <ul class="select-dropdown">
+                <li><a>All services</a></li>
+                <li><a>Amazon</a></li>
+                <li><a>Rackspace</a></li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
     <table class="server-list main-table" cellspacing="0" cellpadding="0">
         <thead>
             <tr>
@@ -21,7 +33,7 @@
                 <td>255.255.255.255</td>
                 <td>Pikachu</td>
                 <td>1024Mb</td>
-                <td><span class="server-status on">&#9679;</span> Running</td>
+                <td><span class="server-status on">&#9679;</span>Running</td>
                 <td>
                     <div class="server-actions">
                         <a class="actions-trigger">&#9660;</a>

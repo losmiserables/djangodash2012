@@ -114,12 +114,12 @@ h4 {font-size: 18px;}
 .main-table th {
     background: #d3d3d3;
     font-size: 14px;
-    padding: 4px 8px;
+    padding: 5px 8px;
 }
 
 .main-table tr td {
     background: #f6f6f6;
-    padding: 6px 8px;
+    padding: 7px 8px;
 
     transition: background .10s ease-in-out;
     -moz-transition: background .10s ease-in-out;
@@ -130,7 +130,7 @@ h4 {font-size: 18px;}
 }
 
 .main-table tr:hover td { background: #fcfcfc; }
-.main-table tr.alt:hover td { background: #fbfbfb; }
+.main-table tr.alt:hover td { background: #fefefe; }
 
 .cloud-icon, .amazon-icon, .rackspace-icon {
     background: url(../../static/img/sprite-icons.png) no-repeat;
@@ -211,3 +211,85 @@ h4 {font-size: 18px;}
     padding: 4px 10px;
 }
 .server-actions .actions-dropdown li a:hover { background: #444; }
+
+
+.toolbar { margin-bottom: 15px; }
+
+.select-holder { position: relative; float: left; }
+.select-holder .select-trigger {
+    background: #f0f0f0;
+    color: #404040;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 3px 8px;
+
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+
+    transition: background .05s ease-in-out;
+    -moz-transition: background .05s ease-in-out;
+    -webkit-transition: background .05s ease-in-out;
+}
+
+.select-holder .select-trigger:hover {
+    background: #d3d3d3;
+}
+
+.select-holder .select-trigger.open {
+    background: #555;
+    color: #fff;
+    border-radius: 3px 3px 0 0;
+    -webkit-border-radius: 3px 3px 0 0;
+    -moz-border-radius: 3px 3px 0 0;
+}
+
+.select-holder .select-dropdown {
+    background: #555;
+    color: #fff;
+    display: none;
+    position: absolute;
+    padding: 10px 0;
+    left: 0;
+    top: 25px;
+    z-index: 200;
+    min-width: 120px;
+
+    border-radius: 0 3px 3px 3px;
+    -webkit-border-radius: 0 3px 3px 3px;
+    -moz-border-radius: 0 3px 3px 3px;
+}
+
+.select-holder .select-dropdown li a {
+    display: block;
+    color: #fff;
+    cursor: pointer;
+    padding: 4px 10px;
+}
+
+.select-holder .select-dropdown li a:hover { background: #444; }
+
+.blue-btn {
+    background: #44b2cd;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+    padding: 3px 8px;
+
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+
+    transition: background .05s ease-in-out;
+    -moz-transition: background .05s ease-in-out;
+    -webkit-transition: background .05s ease-in-out;
+}
+
+.blue-btn:hover { background: #3aa2bc; }
+.blue-btn:active { background: #378598; }
