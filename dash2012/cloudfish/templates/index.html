@@ -2,14 +2,26 @@
 
 {% block content %}
 
+        <div class="popup-overlay"></div>
+        <div class="popup-holder">
+            <h2>Add server</h2>
+            <form></form>
+            <div class="popup-actions">
+                <a class="popup-cancel btn">Cancel</a>
+                <a class="popup-save blue-btn">Add</a>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
     <div class="toolbar">
-        <a class="add-server blue-btn">+ Add</a>
+        <a class="add-server blue-btn popup-trigger">+ Add</a>
         <div class="service-filter select-holder">
             <a class="select-trigger">All services &#9660;</a>
             <ul class="select-dropdown">
-                <li><a>All services</a></li>
-                <li><a>Amazon</a></li>
-                <li><a>Rackspace</a></li>
+                <li><a class="all-filter filter-option">All services</a></li>
+                <li><a class="amazon-filter filter-option">Amazon</a></li>
+                <li><a class="rackspace-filter filter-option">Rackspace</a></li>
             </ul>
         </div>
         <div class="clear"></div>
@@ -27,7 +39,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr class="amazon-row">
                 <td><span class="amazon-icon"></span></td>
                 <td>Boladão</td>
                 <td>255.255.255.255</td>
@@ -44,7 +56,7 @@
                     </div>
                 </td>
             </tr>
-            <tr class="alt">
+            <tr class="alt rackspace-row">
                 <td><span class="rackspace-icon"></span></td>
                 <td>Boladão</td>
                 <td>255.255.255.255</td>
@@ -61,6 +73,147 @@
                     </div>
                 </td>
             </tr>
+
+
+            <tr class="amazon-row">
+                <td><span class="amazon-icon"></span></td>
+                <td>Boladão</td>
+                <td>255.255.255.255</td>
+                <td>Pikachu</td>
+                <td>1024Mb</td>
+                <td><span class="server-status on">&#9679;</span>Running</td>
+                <td>
+                    <div class="server-actions">
+                        <a class="actions-trigger">&#9660;</a>
+                        <ul class="actions-dropdown">
+                            <li><a>Stop</a></li>
+                            <li><a>Remove</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr class="alt rackspace-row">
+                <td><span class="rackspace-icon"></span></td>
+                <td>Boladão</td>
+                <td>255.255.255.255</td>
+                <td>Pikachu</td>
+                <td>1024Mb</td>
+                <td><span class="server-status off">&#9679;</span>Running</td>
+                <td>
+                    <div class="server-actions">
+                        <a class="actions-trigger">&#9660;</a>
+                        <ul class="actions-dropdown">
+                            <li><a>Stop</a></li>
+                            <li><a>Remove</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr class="amazon-row">
+                <td><span class="amazon-icon"></span></td>
+                <td>Boladão</td>
+                <td>255.255.255.255</td>
+                <td>Pikachu</td>
+                <td>1024Mb</td>
+                <td><span class="server-status on">&#9679;</span>Running</td>
+                <td>
+                    <div class="server-actions">
+                        <a class="actions-trigger">&#9660;</a>
+                        <ul class="actions-dropdown">
+                            <li><a>Stop</a></li>
+                            <li><a>Remove</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr class="alt rackspace-row">
+                <td><span class="rackspace-icon"></span></td>
+                <td>Boladão</td>
+                <td>255.255.255.255</td>
+                <td>Pikachu</td>
+                <td>1024Mb</td>
+                <td><span class="server-status off">&#9679;</span>Running</td>
+                <td>
+                    <div class="server-actions">
+                        <a class="actions-trigger">&#9660;</a>
+                        <ul class="actions-dropdown">
+                            <li><a>Stop</a></li>
+                            <li><a>Remove</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr class="amazon-row">
+                <td><span class="amazon-icon"></span></td>
+                <td>Boladão</td>
+                <td>255.255.255.255</td>
+                <td>Pikachu</td>
+                <td>1024Mb</td>
+                <td><span class="server-status on">&#9679;</span>Running</td>
+                <td>
+                    <div class="server-actions">
+                        <a class="actions-trigger">&#9660;</a>
+                        <ul class="actions-dropdown">
+                            <li><a>Stop</a></li>
+                            <li><a>Remove</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr class="alt rackspace-row">
+                <td><span class="rackspace-icon"></span></td>
+                <td>Boladão</td>
+                <td>255.255.255.255</td>
+                <td>Pikachu</td>
+                <td>1024Mb</td>
+                <td><span class="server-status off">&#9679;</span>Running</td>
+                <td>
+                    <div class="server-actions">
+                        <a class="actions-trigger">&#9660;</a>
+                        <ul class="actions-dropdown">
+                            <li><a>Stop</a></li>
+                            <li><a>Remove</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr class="amazon-row">
+                <td><span class="amazon-icon"></span></td>
+                <td>Boladão</td>
+                <td>255.255.255.255</td>
+                <td>Pikachu</td>
+                <td>1024Mb</td>
+                <td><span class="server-status on">&#9679;</span>Running</td>
+                <td>
+                    <div class="server-actions">
+                        <a class="actions-trigger">&#9660;</a>
+                        <ul class="actions-dropdown">
+                            <li><a>Stop</a></li>
+                            <li><a>Remove</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr class="alt rackspace-row">
+                <td><span class="rackspace-icon"></span></td>
+                <td>Boladão</td>
+                <td>255.255.255.255</td>
+                <td>Pikachu</td>
+                <td>1024Mb</td>
+                <td><span class="server-status off">&#9679;</span>Running</td>
+                <td>
+                    <div class="server-actions">
+                        <a class="actions-trigger">&#9660;</a>
+                        <ul class="actions-dropdown">
+                            <li><a>Stop</a></li>
+                            <li><a>Remove</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+
+
+
         </tbody>
     </table>
 
