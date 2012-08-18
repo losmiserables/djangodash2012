@@ -16,11 +16,6 @@ def login(r):
 
     return render(r, 'auth.html')
 
-def register(r):
-    if r.POST:
-
-        pass
-    return render(r, 'register.html')
 
 def logout(request):
     auth_logout(request)
