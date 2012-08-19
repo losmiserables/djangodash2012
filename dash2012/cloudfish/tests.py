@@ -39,6 +39,7 @@ class EmailValidationTest(TestCase):
 
         self.assertIn("This email is already in use.", response.content)
 
+
 class ConnectOnFirstLoginTest(TestCase):
     def test_redirect_to_connect_if_no_clouds_found(self):
         """
@@ -51,3 +52,15 @@ class ConnectOnFirstLoginTest(TestCase):
         client = Client()
         response = client.post("/auth/login", {'username': 'newuser', 'password': 'pass'})
         self.assertIn(reverse('connect-view'), response['Location'])
+
+
+class ConnectAccountTest(TestCase):
+    def test_connect_account(self):
+        user = Account.objects.create_user(username="newuser", password="pass")
+        user.save()
+
+        client = Client()
+        client.post("/auth/login", {'username': 'newuser', 'password': 'pass'})
+        client.post("/connect", {"aws_key_id": 1, "aws_secret_key": "my_secrete_key"})
+
+        self.assertEqual(1, Cloud.objects.filter(account=user).count())

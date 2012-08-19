@@ -12,17 +12,18 @@
           </div>
         {% endif %}
 
-        <form action="{% url login-view %}" method="POST">
+        <form action="{% url connect-view %}" method="POST">
+            {% csrf_token %}
 
             <div class="form-row connect-amazon">
                 <img src="{{STATIC_URL}}img/amazon-aws.png"/>
 
                 <div class="connect-fields">
-                    <label>Your Amazon AWS username:</label>
-                    <input type="text" value=""/>
+                    <label>Your Amazon AWS access key id:</label>
+                    <input type="text" name="aws_key_id" value=""/>
 
                     <label>Your Amazon AWS key:</label>
-                     <input type="text" value=""/>
+                     <input type="text" name="aws_secret_key" value=""/>
                 </div>
 
                 <div class="clear"></div>
@@ -32,10 +33,10 @@
                 <img src="{{STATIC_URL}}img/rackspace.png"/>
                 <div class="connect-fields">
                     <label>Your Rackspace username:</label>
-                    <input type="text" value=""/>
+                    <input type="text" name="rackspace_username" value=""/>
 
                     <label>Your Rackspace key:</label>
-                    <input type="text" value=""/>
+                    <input type="text" name="rackspace_api_key" value=""/>
                 </div>
                 <div class="clear"></div>
             </div>

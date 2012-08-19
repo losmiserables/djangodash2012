@@ -3,6 +3,7 @@ from cloudfish import SUPPORTED_CLOUDS
 from auth.models import Account
 from django.core import signing
 
+
 class Cloud(models.Model):
 
     type = models.CharField(max_length=32, choices=SUPPORTED_CLOUDS)
