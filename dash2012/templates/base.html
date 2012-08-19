@@ -28,48 +28,56 @@
     </head>
 
     <body>
-        <div class="wrap">
-            <div id="header">
-              {% if user.is_authenticated %}
-              <a href="{% url myservers-view %}" class="logo">
-              {% else %}
-              <a href="{% url index-view %}" class="logo">
-              {% endif %}
-                <img alt="cloudfish" src="{{STATIC_URL}}img/logo.png"/>
-              </a>
-                <div class="welcome-user">
-                    {% if user.is_authenticated %}
-                        <span class="username">{{ greeting }} {{ user.username }}</span>
-                        <span class="logout"><a href="{% url logout-view %}">logout</a></span>
-                    {% else %}
-                        <a class="login" href="{% url login-view %}">Login</a>
-                        <a class="signup" href="{% url register-view %}">Sign up</a>
-                    {% endif %}
+        <div class="background">
+            <div class="wrap">
+                <div id="header">
+                  {% if user.is_authenticated %}
+                  <a href="{% url myservers-view %}" class="logo">
+                  {% else %}
+                  <a href="{% url index-view %}" class="logo">
+                  {% endif %}
+                    <img alt="cloudfish" src="{{STATIC_URL}}img/logo.png"/>
+                  </a>
+                    <div class="welcome-user">
+                        {% if user.is_authenticated %}
+                            <span class="username">{{ greeting }} {{ user.username }}</span>
+                            <span class="logout"><a href="{% url logout-view %}">logout</a></span>
+                        {% else %}
+                            <a class="login" href="{% url login-view %}">Login</a>
+                            <a class="signup" href="{% url register-view %}">Sign up</a>
+                        {% endif %}
 
+                    </div>
+                    <div class="clear"></div>
                 </div>
-                <div class="clear"></div>
-            </div>
-            {% if user.is_authenticated %}
-            <div id="content">
-                <div class="sidebar">
-                    <ul class="nav">
-                        <li><a href="{% url myservers-view %}" class="{{ active_servers }}">My servers</a></li>
-                        <li><a href="{% url myaccount-view %}" class="{{ active_account }}">My account</a></li>
-                    </ul>
+                {% if user.is_authenticated %}
+                <div id="content">
+                    <div class="sidebar">
+                        <ul class="nav">
+                            <li><a href="{% url myservers-view %}" class="{{ active_servers }}">My servers</a></li>
+                            <li><a href="{% url myaccount-view %}" class="{{ active_account }}">My account</a></li>
+                        </ul>
 
+                    </div>
+                {% endif %}
+
+                    {% if user.is_authenticated %} <div class="main-content">{% endif %}
+                        {% block content %} {% endblock %}
+                    {% if user.is_authenticated %} </div>{% endif %}
+
+                    <div class="clear"></div>
                 </div>
-            {% endif %}
 
-                {% if user.is_authenticated %} <div class="main-content">{% endif %}
-                    {% block content %} {% endblock %}
-                {% if user.is_authenticated %} </div>{% endif %}
-
-                <div class="clear"></div>
             </div>
-
         </div>
 
-        <div id="footer"></div>
+        <div id="footer">
+            <div class="wrap">
+                <ul>
+                    <li><a href=""><img src="{{ STATIC_URL }}img/github.png"></a> </li>
+                </ul>
+            </div>
+        </div>
     </body>
 
 </html>
