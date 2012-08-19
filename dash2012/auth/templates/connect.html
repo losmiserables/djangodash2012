@@ -3,7 +3,7 @@
 {% block content %}
 
 
-    <div id="connect-clouds" class="auth-block">
+    <div class="auth-block connect-clouds">
 
         <h1>Connect your clouds</h1>
         <div class="feedback success">
@@ -11,7 +11,7 @@
         </div>
         <form action="{% url login-view %}" method="POST">
 
-            <div id="connect-amazon" class="form-row">
+            <div class="form-row connect-amazon">
                 <img src="{{STATIC_URL}}img/amazon-aws.png"/>
                 <div class="clear"></div>
                 <label>Your Amazon AWS username:</label>
@@ -23,7 +23,7 @@
                 <div class="clear"></div>
             </div>
 
-            <div class="form-row">
+            <div class="form-row connect-rackspace">
                 <img src="{{STATIC_URL}}img/rackspace.png"/>
                 <div class="clear"></div>
                 <label>Your Rackspace username:</label>

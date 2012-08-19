@@ -436,15 +436,35 @@ button.blue-btn { float: right; padding: 4px 8px; margin:10px 0 0 0; }
     border: 1px solid #ACE2A7;
 }
 
-#connect-clouds {
+.connect-clouds {
     width: 442px;
 }
-#connect-clouds .form-row img { margin-right: 42px;}
-#connect-clouds img, #connect-clouds input { float: left; }
+.connect-clouds .form-row img { margin-right: 42px;}
+.connect-clouds img, .connect-clouds input { float: left; }
 
-#connect-clouds .form-row { border-bottom: 1px solid #eee; margin-bottom: 25px; padding-bottom: 25px; }
-#connect-clouds .btn { margin-top: 10px; }
+.connect-clouds .form-row { border-bottom: 1px solid #eee; margin-bottom: 25px; padding-bottom: 25px; }
+.connect-clouds .btn { margin-top: 10px; }
 
-#connect-clouds .secure-msg { margin-bottom: 30px; }
+.connect-clouds .secure-msg { margin-bottom: 30px; }
 
-#connect-clouds .secure-text { float: left; margin: 1px 0 0 10px; }
+.connect-clouds .secure-text { float: left; margin: 1px 0 0 10px; }
+
+
+/* My account */
+
+.account-info, .cloud-info { float: left; }
+.account-info {
+    border-right: 1px solid #ddd;
+    margin-right: 35px;
+    padding-right: 35px; }
+
+#account-block {
+    background: #F0F0F0;
+    padding: 10px 20px;
+    width: auto;
+}
+#account-block .secure-msg { float: left; }
+
+.cloud-info { width: 345px;; }
+.cloud-info .connect-amazon { border-bottom: 1px solid #ddd; }
+.cloud-info .connect-rackspace { border-bottom: 0; }
