@@ -46,7 +46,7 @@
             <select name="size">
                 {% for provider,sizes in sizes.items %}
                     {% for size in sizes %}
-                        <option value="{{ size.id }}">{{ size.name }}</option>
+                        <option value="{{ size.id }}">{{ size.name|truncatechars:30 }}</option>
                     {% endfor %}
                 {% endfor %}
             </select>
@@ -57,7 +57,11 @@
             <select name="location">
                 {% for provider,locations in regions.items %}
                     {% for location in locations %}
-                        <option value="{{ location.id }}">{{ location.name }}</option>
+                        {% if provider == "AM" %}
+                            <option value="{{ location.availability_zone.name }}">{{ location.availability_zone.name }}</option>
+                            {% else %}
+                            <option value="{{ location.name }}">{{ location.name }}</option>
+                        {% endif %}
                     {% endfor %}
                 {% endfor %}
             </select>

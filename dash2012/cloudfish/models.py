@@ -59,16 +59,26 @@ class Cloud(models.Model):
             return conn.list_images()
 
     def get_sizes(self, cloud_login, cloud_password):
-        # FIXME: Amazon
-        if self.type == CLOUD_RACKSPACE:
+        if self.type == CLOUD_AWS:
+            Driver = get_driver(SUPPORTED_PROVIDERS[self.type][0])
+        else:
             Driver = get_driver(SUPPORTED_PROVIDERS[self.type])
-            conn = Driver(cloud_login, cloud_password)
 
-            return conn.list_sizes()
+        conn = Driver(cloud_login, cloud_password)
+
+        return conn.list_sizes()
 
     def get_locations(self, cloud_login, cloud_password):
-        # FIXME: Amazon
-        if self.type == CLOUD_RACKSPACE:
+        if self.type == CLOUD_AWS:
+            locations = []
+            for provider in SUPPORTED_PROVIDERS[self.type]:
+                Driver = get_driver(provider)
+                conn = Driver(cloud_login, cloud_password)
+                locations += conn.list_locations()
+
+            return locations
+
+        else:
             Driver = get_driver(SUPPORTED_PROVIDERS[self.type])
             conn = Driver(cloud_login, cloud_password)
 
@@ -83,7 +93,7 @@ class Cloud(models.Model):
             locations = conn.list_locations()
             image = [img for img in images if img.id==image][0]
             size = [sz for sz in sizes if sz.id==size][0]
-            location = [loc for loc in locations if loc.id==location][0]
+            location = [loc for loc in locations if loc.name==location][0]
 
             return conn.create_node(name=name, image=image, size=size, location=location)
 

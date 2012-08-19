@@ -181,12 +181,12 @@ def create(request):
         name = request.POST["node-name"]
         image_id = request.POST["image"]
         size_id = request.POST["size"]
-        location_id = request.POST["location"]
+        location = request.POST["location"]
 
         cloud = Cloud.objects.filter(account=account, type=provider)[0]
-        cloud.create_server(name=name, image=image_id, size=size_id, location=location_id, **request.session["clouds"][cloud.type])
+        cloud.create_server(name=name, image=image_id, size=size_id, location=location, **request.session["clouds"][cloud.type])
 
-        return render(request, "servers.html", c)
+    return HttpResponseRedirect(reverse("myservers-view"))
 
 
 @login_required
