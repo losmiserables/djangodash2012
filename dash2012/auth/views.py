@@ -11,20 +11,20 @@ def login(r):
         username = r.POST['username']
         password = r.POST['password']
         user = authenticate(username=username, password=password)
-
         if user is not None:
             auth_login(r, user)
             if not Cloud.objects.filter(account=user).exists():
                 r.session['passwd'] = password
                 return HttpResponseRedirect(reverse('connect-view'))
-
             # If we have at least one cloud, put its data in the user session.
             r.session['clouds'] = {}
 
-            connected_clouds = Cloud.objects.filter(user=user)
+            connected_clouds = Cloud.objects.filter(account=user)
             for cloud in connected_clouds:
-                r.session['clouds'][cloud.type] = cloud.decode_auth_data(salt=password)
+                r.session['clouds'][cloud.type] = cloud.decode_auth_data(salt=user.password)
+
             return HttpResponseRedirect(reverse('myservers-view'))
+
         else:
             c['errors'] = "Login failed, please try again"
 
