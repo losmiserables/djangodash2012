@@ -4,12 +4,13 @@
 
 <div class="popup-overlay"></div>
 <div class="popup-holder">
-    <h2>Add server</h2>
-    <form class="popup-form" method="POST" action={% url create-server %}>
-    {% csrf_token %}
+  <h2>Add server</h2>
+
+
+    <form class="popup-form">
         <div class="form-row create-onservice">
             <div class="select-onservice">
-                <input type="radio" name="provider" value="AM"/>
+                <input type="radio" name="a" class="provider-am"/>
                 <label>
                     <span class="amazon-icon"></span>
                     <span class="choose-service">Amazon</span>
@@ -18,7 +19,7 @@
             </div>
 
             <div class="select-onservice">
-                <input type="radio" name="provider" value="RS"/>
+                <input type="radio" name="a" class="provider-rs"/>
                 <label>
                     <span class="rackspace-icon"></span>
                     <span class="choose-service">Rackspace</span>
@@ -26,7 +27,12 @@
                 </label>
             </div>
             <div class="clear"></div>
-        </div>
+          </div>
+    </form>
+    <!-- Amazon form -->
+    <form class="popup-form provider-form" method="POST" action={% url create-server %} id='AM'>
+      {% csrf_token %}
+      <input type="hidden" name="provider" value="AM">
         <div class="form-row">
             <label>Name:</label>
             <input type="text" name="node-name"/>
@@ -34,7 +40,55 @@
         <div class="form-row">
             <label>Image:</label>
             <select name="image">
-                {% for provider,images in images.items %}
+                {% for provider,images in images.AM.items %}
+                    {% for image in images %}
+                        <option value="{{ image.id }}">{{ image.name|truncatechars:30 }}</option>
+                    {% endfor %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-row">
+            <label>Size:</label>
+            <select name="size">
+                {% for provider,sizes in sizes.items %}
+                    {% for size in sizes %}
+                        <option value="{{ size.id }}">{{ size.name }}</option>
+                    {% endfor %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label>Region:</label>
+            <select name="location">
+                {% for provider,locations in regions.items %}
+                    {% for location in locations %}
+                        <option value="{{ location.id }}">{{ location.name }}</option>
+                    {% endfor %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="popup-actions">
+            <button type="submit" class="popup-save blue-btn">Add</button>
+            <div class="clear"></div>
+        </div>
+
+      </form>
+
+      <!-- Form Rackspace -->
+
+    <form class="popup-form provider-form" method="POST" action={% url create-server %} id='RS'>
+    {% csrf_token %}
+        <input type="hidden" name="provider" value="RS">
+        <div class="form-row">
+            <label>Name:</label>
+            <input type="text" name="node-name"/>
+        </div>
+        <div class="form-row">
+            <label>Image:</label>
+            <select name="image">
+                {% for provider,images in images.RS.items %}
                     {% for image in images %}
                         <option value="{{ image.id }}">{{ image.name|truncatechars:30 }}</option>
                     {% endfor %}
@@ -68,12 +122,15 @@
         </div>
 
         <div class="popup-actions">
-            <a class="popup-cancel btn">Cancel</a>
             <button type="submit" class="popup-save blue-btn">Add</button>
             <div class="clear"></div>
         </div>
 
-    </form>
+      </form>
+
+          <a class="popup-cancel btn">Cancel</a>
+          <div class="clear"></div>
+
 
     <div class="clear"></div>
 </div>

@@ -48,11 +48,25 @@ $(document).ready(function() {
 
         $('.popup-overlay').fadeIn('fast');
         $('.popup-holder').fadeIn('fast');
+        $('.provider-form').hide();
+        console.log("a");
     }));
 
     $('.popup-cancel').live('click', (function(){
         $('.popup-overlay').fadeOut('fast');
         $('.popup-holder').fadeOut('fast');
+
+    }));
+
+    $('.provider-am').live('click', (function(){
+        $('#RS').hide();
+        $('#AM').fadeIn('fast');
+
+    }));
+    
+    $('.provider-rs').live('click', (function(){
+        $('#AM').hide();
+        $('#RS').fadeIn('fast');
 
     }));
 
