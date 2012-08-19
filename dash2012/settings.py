@@ -30,12 +30,20 @@ DATABASES = {
 
 LOGIN_URL = '/auth/login'
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+if DEBUG:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+            'LOCATION': 'cloudfish'
+        }
+}
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211',
-    }
+else:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+            'LOCATION': '127.0.0.1:11211',
+        }
 }
 
 ANALYTICS = os.environ.get('ANALYTICS', '')
