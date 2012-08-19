@@ -2,11 +2,13 @@
 
 {% block content %}
 
-    <div class="feedback success">
-        <span>Yeeha! Success fishing your cloud servers.</span>
-    </div>
+
     <div id="connect-clouds" class="auth-block">
+
         <h1>Connect your clouds</h1>
+        <div class="feedback success">
+            <span>Yeeha! Success fishing your cloud servers.</span>
+        </div>
         <form action="{% url login-view %}" method="POST">
 
             <div id="connect-amazon" class="form-row">
