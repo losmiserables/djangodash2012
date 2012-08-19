@@ -33,3 +33,10 @@ class Cloud(models.Model):
         conn = Driver(cloud_login, cloud_password)
 
         return conn.list_nodes()
+
+    def is_valid(self, cloud_login, cloud_password):
+        try:
+            self.get_servers(cloud_login, cloud_password)
+            return True
+        except Exception:
+            return False

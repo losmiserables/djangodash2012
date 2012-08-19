@@ -83,3 +83,7 @@ class ConnectAccountTest(TestCase):
         client.post("/connect", {"aws_key_id": 1, "aws_secret_key": "my_secrete_key"})
 
         self.assertEqual(1, Cloud.objects.filter(account=user).count())
+
+    def test_test_cloud(self):
+        cloud = Cloud(type=CLOUD_RACKSPACE)
+        self.assertFalse(cloud.is_valid(cloud_login='abc', cloud_password='passwd'))
