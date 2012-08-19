@@ -42,10 +42,10 @@ class PrepareSessionTest(TestCase):
         aws.save()
 
         self.assertEquals(1, len(Cloud.objects.filter(account=user)))
+        self.assertEquals(auth_data, Cloud.objects.filter(account=user)[0].decode_auth_data(salt='pass'))
 
         client = Client()
         self.assertTrue(client.login(username='name@mail.com', password='pass'))
-        self.assertEquals('', client.session['passwd'])
         self.assertEquals(auth_data, client.session['clouds']['AM'])
 
 
