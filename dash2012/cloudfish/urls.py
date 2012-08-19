@@ -10,4 +10,5 @@ urlpatterns = patterns('cloudfish.views',
     url(r'^create', 'create', name='create-server'),
     url(r'^stop/(?P<provider>[a-zA-Z0-9_.-]+)/(?P<node_id>[a-zA-Z0-9_.-]+)', 'stop', name='stop-server'),
     url(r'^start/(?P<provider>[a-zA-Z0-9_.-]+)/(?P<node_id>[a-zA-Z0-9_.-]+)', 'start', name='start-server'),
+    url(r'^remove/(?P<provider>[a-zA-Z0-9_.-]+)/(?P<node_id>[a-zA-Z0-9_.-]+)', 'remove', name='remove-server'),
 )

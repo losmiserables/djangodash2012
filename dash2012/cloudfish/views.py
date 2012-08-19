@@ -207,3 +207,13 @@ def start(request, provider, node_id):
     cloud.start_server(node_id, **credentials)
 
     return HttpResponseRedirect(reverse("myservers-view"))
+
+
+@login_required
+def remove(request, provider, node_id):
+    credentials = request.session["clouds"][provider]
+    account = Account.objects.get(id=request.user.id)
+    cloud = Cloud.objects.filter(account=account, type=provider)[0]
+    cloud.destroy_server(node_id, **credentials)
+
+    return HttpResponseRedirect(reverse("myservers-view"))

@@ -104,7 +104,7 @@ class Cloud(models.Model):
             for provider in SUPPORTED_PROVIDERS[self.type]:
                 Driver = get_driver(provider)
                 conn = Driver(cloud_login, cloud_password)
-                nodes += sorted(conn.list_nodes(), key=lambda item: item.name)
+                nodes += conn.list_nodes()
 
             node = [nd for nd in nodes if nd.id == node][0]
             driver = node.driver
@@ -117,9 +117,30 @@ class Cloud(models.Model):
             for provider in SUPPORTED_PROVIDERS[self.type]:
                 Driver = get_driver(provider)
                 conn = Driver(cloud_login, cloud_password)
-                nodes += sorted(conn.list_nodes(), key=lambda item: item.name)
+                nodes += conn.list_nodes()
 
             node = [nd for nd in nodes if nd.id == node][0]
             driver = node.driver
 
             return driver.ex_start_node(node)
+
+    def destroy_server(self, node, cloud_login, cloud_password):
+        if self.type == CLOUD_AWS:
+            nodes = []
+            for provider in SUPPORTED_PROVIDERS[self.type]:
+                Driver = get_driver(provider)
+                conn = Driver(cloud_login, cloud_password)
+                nodes += conn.list_nodes()
+                matching_node = [nd for nd in nodes if nd.id == node]
+
+                if matching_node:
+                    return conn.destroy_node(matching_node[0])
+
+        if self.type == CLOUD_RACKSPACE:
+            Driver = get_driver(SUPPORTED_PROVIDERS[self.type])
+            conn = Driver(cloud_login, cloud_password)
+            nodes = conn.list_nodes()
+            matching_node = [nd for nd in nodes if nd.id == node]
+
+            if matching_node:
+                return conn.destroy_node(matching_node[0])

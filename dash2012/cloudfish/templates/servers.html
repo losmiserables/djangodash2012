@@ -126,7 +126,7 @@
                                 {% else %}
                                     <li><a href="{% url start-server provider server.id %}">Start</a></li>
                                 {% endif %}
-                                <li><a>Remove</a></li>
+                                <li><a href="{% url remove-server provider server.id %}">Remove</a></li>
                             </ul>
                         </div>
                     </td>
@@ -149,7 +149,7 @@
                         <div class="server-actions">
                             <a class="actions-trigger">&#9660;</a>
                             <ul class="actions-dropdown">
-                                <li><a>Remove</a></li>
+                                <li><a href="{% url remove-server provider server.id %}">Remove</a></li>
                             </ul>
                         </div>
                     </td>
