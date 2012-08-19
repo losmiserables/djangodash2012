@@ -118,7 +118,7 @@
                             <a class="actions-trigger">&#9660;</a>
                             <ul class="actions-dropdown">
                                 {% if server.state == 0 %}
-                                    <li><a>Stop</a></li>
+                                    <li><a href="{% url stop-server provider server.id %}">Stop</a></li>
                                 {% else %}
                                     <li><a>Start</a></li>
                                 {% endif %}

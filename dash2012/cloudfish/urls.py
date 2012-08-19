@@ -8,4 +8,5 @@ urlpatterns = patterns('cloudfish.views',
     url(r'^connect', 'connect', name='connect-view'),
     url(r'^disconnect', 'disconnect', name='disconnect-view'),
     url(r'^create', 'create', name='create-server'),
+    url(r'^stop/(?P<provider>[a-zA-Z0-9_.-]+)/(?P<node_id>[a-zA-Z0-9_.-]+)', 'stop', name='stop-server'),
 )

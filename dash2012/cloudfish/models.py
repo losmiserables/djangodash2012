@@ -75,7 +75,6 @@ class Cloud(models.Model):
             return conn.list_locations()
 
     def create_server(self, name, image, size, location, cloud_login, cloud_password):
-        print name, image, size, cloud_login, location, cloud_password
         if self.type == CLOUD_RACKSPACE:
             Driver = get_driver(SUPPORTED_PROVIDERS[self.type])
             conn = Driver(cloud_login, cloud_password)
@@ -86,3 +85,16 @@ class Cloud(models.Model):
             size = [sz for sz in sizes if sz.id==size][0]
             location = [loc for loc in locations if loc.id==location][0]
             return conn.create_node(name=name, image=image, size=size, location=location)
+
+    def stop_server(self, node, cloud_login, cloud_password):
+        if self.type == CLOUD_AWS:
+            nodes = []
+            for provider in SUPPORTED_PROVIDERS[self.type]:
+                Driver = get_driver(provider)
+                conn = Driver(cloud_login, cloud_password)
+                nodes += sorted(conn.list_nodes(), key=lambda item: item.name)
+
+            node = [nd for nd in nodes if nd.id == node][0]
+            driver = node.driver
+
+            return driver.ex_stop_node(node)
