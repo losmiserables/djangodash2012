@@ -16,6 +16,7 @@ def login(r):
         if user is not None:
             auth_login(r, user)
             if not Cloud.objects.filter(account=user).exists():
+                r.session['passwd'] = password
                 return HttpResponseRedirect(reverse('connect-view'))
 
             # If we have at least one cloud, put its data in the user session.

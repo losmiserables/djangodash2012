@@ -40,6 +40,7 @@ def register(request):
         user = authenticate(username=username, password=password)
         login(request, user)
 
+        request.session['passwd'] = password
         return HttpResponseRedirect(reverse("connect-view"))
 
     return render(request, 'register.html', c)
