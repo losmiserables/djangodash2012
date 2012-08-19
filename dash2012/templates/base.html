@@ -42,8 +42,8 @@
                         <span class="username">{{ greeting }} {{ user.username }}</span>
                         <span class="logout"><a href="{% url logout-view %}">logout</a></span>
                     {% else %}
-                        <span class="login"><a href="{% url login-view %}">login</a></span>
-                        <span class="login"><a href="{% url register-view %}">Sign up</a></span>
+                        <a class="login" href="{% url login-view %}">Login</a>
+                        <a class="signup" href="{% url register-view %}">Sign up</a>
                     {% endif %}
 
                 </div>

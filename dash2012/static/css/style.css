@@ -473,3 +473,22 @@ button.blue-btn { float: right; padding: 4px 8px; margin:10px 0 0 0; }
 .cloud-info { width: 345px;; }
 .cloud-info .connect-amazon { border-bottom: 1px solid #ddd; }
 .cloud-info .connect-rackspace { border-bottom: 0; }
+
+/* Home */
+
+.banner {
+    background: url(../../static/img/hook.png) no-repeat 615px -15px #4b4b4b;
+    padding: 40px;
+    height: 160px;
+}
+
+.banner h1 { color: #fff; font-size: 42px;}
+.banner h2 { color: #fff; font-size: 18px;}
+.banner .blue-btn {font-size: 18px;}
+.amazon-text {color: #f6b324;}
+.rackspace-text {color: #ec6868;}
+
+.login { margin-right: 10px;}
+
+.login, .signup {font-size: 18px; text-decoration: none;}
+.login:hover, .signup:hover {color: #44B2CD;}
