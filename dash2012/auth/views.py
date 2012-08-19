@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from cloudfish.models import Cloud
+from auth.models import Account
 
 
 def login(r):
@@ -19,10 +20,12 @@ def login(r):
             # If we have at least one cloud, put its data in the user session.
             r.session['clouds'] = {}
 
-            connected_clouds = Cloud.objects.filter(account=user)
+            account = Account.objects.filter(id=user.id)
+            connected_clouds = Cloud.objects.filter(account=account)
             for cloud in connected_clouds:
-                r.session['clouds'][cloud.type] = cloud.decode_auth_data(salt=user.password)
+                r.session['clouds'][cloud.type] = cloud.decode_auth_data(salt=password)
 
+            r.session.modified = True
             return HttpResponseRedirect(reverse('myservers-view'))
 
         else:

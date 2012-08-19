@@ -1,5 +1,6 @@
 from django.db import models
-from cloudfish import SUPPORTED_CLOUDS
+from libcloud.compute.providers import get_driver
+from cloudfish import SUPPORTED_CLOUDS, SUPPORTED_PROVIDERS
 from auth.models import Account
 from django.core import signing
 
@@ -26,3 +27,9 @@ class Cloud(models.Model):
 
     def decode_auth_data(self, salt):
         return signing.loads(self.auth_data, salt=salt)
+
+    def get_servers(self, cloud_login, cloud_password):
+        Driver = get_driver(SUPPORTED_PROVIDERS[self.type])
+        conn = Driver(cloud_login, cloud_password)
+
+        return conn.list_nodes()
