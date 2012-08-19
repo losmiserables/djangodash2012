@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div id="home">
-        <div class="banner">
-            <h1>Fish your clouds and manage faster</h1>
-            <h2>With Cloudfish you can manage <span class="amazon-text">Amazon AWS</span> and <span class="rackspace-text">Rackspace</span> at the same place.</h2>
-            <a href="{% url register-view %}" class="blue-btn">Start now!</a>
+    <div class="error-page">
+        <div class="aquarium">
+            <h2>The ocean is vast... We didn't found the fish you are looking for :/ </h2>
+            <h3>Instead, we caught this incredible invisible 404 fish! Nice, right?</h3>
+            <div class="aquarium-water"></div>
         </div>
-        <h3>Cloudfish was developed during <a href="http://djangodash.com" target="_blank">Django Dash 2012</a> in less than 48 hours by <a href="http://github.com/losmiserables/djangodash2012" target="_blank">Los Miserables</a>.</h3>
     </div>
 
 {%  endblock %}

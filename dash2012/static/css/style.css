@@ -1,6 +1,6 @@
 html { overflow-y: auto;}
 body,html {
-    background: #666;
+    background: #4a4a4a;
     color: #4b4b4b;
     font-family: 'Source Sans Pro', Arial, Helvetica, Tahoma,  sans-serif;
     font-size: 12px;
@@ -68,7 +68,7 @@ h4 {font-size: 18px;}
     padding: 5px 5px;
 }
 
-.background { background: #f9f9f9;}
+.background { background: url("../../static/img/waves.png") repeat-x center bottom #f9f9f9;}
 
 .wrap {
     margin: 0 auto;
@@ -98,7 +98,6 @@ h4 {font-size: 18px;}
 }
 
 #footer {
-    background: url("../../static/img/waves.png") repeat-x center bottom;
     height: 87px;
     padding: 30px 0;
     border-bottom: 10px solid #4a4a4a;
@@ -550,3 +549,28 @@ button.blue-btn { float: right; padding: 4px 8px; margin:10px 0 0 0; }
 }
 .team a:hover { color: #fff; text-decoration: underline; }
 #djangodash-logo { float: left; margin-top: 20px;}
+
+
+.aquarium {
+    margin: 0 auto;
+    padding-top: 20px;
+    height: 250px;
+}
+.aquarium h2 {
+   /* background: url("../../static/img/waves.png") repeat-x center bottom #f5f5f5; */
+    font-size: 18px;
+    margin: 20px 0;
+    text-align: center;
+}
+.aquarium h3 {
+    font-size: 14px;
+    text-align: center;
+}
+
+/*
+.aquarium-water {
+    background: #4a4a4a;
+    height: 50px;
+
+    border-radius: 0 0 30px 30px;
+}*/
