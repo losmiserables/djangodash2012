@@ -72,7 +72,7 @@ h4 {font-size: 18px;}
 
 .wrap {
     margin: 0 auto;
-    padding-bottom: 60px;
+    padding-bottom: 80px;
     width: 960px;
 }
 
@@ -98,8 +98,7 @@ h4 {font-size: 18px;}
 }
 
 #footer {
-    height: 87px;
-    padding: 30px 0;
+    padding: 30px 0 15px;
     border-bottom: 10px solid #4a4a4a;
 }
 
@@ -107,12 +106,12 @@ h4 {font-size: 18px;}
 .sidebar {
     float: left;
     width: 180px;
-    min-height: 400px;
 }
 
 .main-content {
     border-left: 1px solid #d3d3d3;
     float: left;
+    min-height: 278px;
     padding-left: 10px;
     width: 769px;
 }
@@ -356,7 +355,7 @@ h4 {font-size: 18px;}
 
 .popup-actions { float: right; margin: 20px 0 10px;}
 .popup-actions .blue-btn {margin-right: 0;}
-
+.popup-cancel {margin-top: 10px; }
 
 /* FORM */
 

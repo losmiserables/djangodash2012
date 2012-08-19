@@ -187,3 +187,13 @@ def create(request):
         cloud.create_server(name=name, image=image_id, size=size_id, location=location_id, **request.session["clouds"][cloud.type])
 
         return render(request, "servers.html", c)
+
+
+@login_required
+def stop(request, provider, node_id):
+    credentials = request.session["clouds"][provider]
+    account = Account.objects.get(id=request.user.id)
+    cloud = Cloud.objects.filter(account=account, type=provider)[0]
+    cloud.stop_server(node_id, **credentials)
+
+    return render(request, "servers.html")
