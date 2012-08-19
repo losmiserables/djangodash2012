@@ -371,12 +371,22 @@ h4 {font-size: 18px;}
 
 .form-row input[type="radio"] {display: inline}
 
-.form-row.create-onservice label {
-    display: inline;
+.create-onservice label {
+    float: left;
     font-size: 14px;
     font-weight: bold;
-    margin-right: 10px;
+    margin-right: 17px;
 }
+
+.create-onservice input[type=radio] {
+    float: left;
+    margin-right: 6px;
+}
+.create-onservice .amazon-icon,
+.create-onservice .rackspace-icon { float:left;  margin-right: 6px; }
+
+.select-onservice { float:left; }
+.select-onservice .choose-service { float: left; margin-top: -1px; }
 
 /* AUTH */
 
