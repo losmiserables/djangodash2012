@@ -365,7 +365,6 @@ h4 {font-size: 18px;}
 /* FORM */
 
 .popup-form {
-    width: 270px;
     margin: 0 auto;
 }
 
@@ -394,7 +393,6 @@ h4 {font-size: 18px;}
 .select-onservice {
     background: #eee;
     float:left;
-
 
     border-radius: 3px;
     -moz-border-radius: 3px;
