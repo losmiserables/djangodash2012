@@ -45,7 +45,7 @@ class PrepareSessionTest(TestCase):
         self.assertEquals(auth_data, Cloud.objects.filter(account=user)[0].decode_auth_data(salt='pass'))
 
         client = Client()
-        self.assertTrue(client.login(username='name@mail.com', password='pass'))
+        client.post("/auth/login", {"username": 'name@mail.com', "password": "pass"})
         self.assertEquals(auth_data, client.session['clouds']['AM'])
 
 
