@@ -196,7 +196,7 @@ def stop(request, provider, node_id):
     cloud = Cloud.objects.filter(account=account, type=provider)[0]
     cloud.stop_server(node_id, **credentials)
 
-    return render(request, "servers.html")
+    return HttpResponseRedirect(reverse("myservers-view"))
 
 
 @login_required
@@ -206,4 +206,4 @@ def start(request, provider, node_id):
     cloud = Cloud.objects.filter(account=account, type=provider)[0]
     cloud.start_server(node_id, **credentials)
 
-    return render(request, "servers.html")
+    return HttpResponseRedirect(reverse("myservers-view"))
