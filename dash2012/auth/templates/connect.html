@@ -5,10 +5,13 @@
 
     <div class="auth-block connect-clouds">
 
-        <h1>Connect your clouds</h1>
+      <h1>Connect your clouds</h1>
+        {% if msgs %}
         <div class="feedback success">
-            <span>Yeeha! Success fishing your cloud servers.</span>
-        </div>
+          <span>{{ msgs }}</span>
+          </div>
+        {% endif %}
+
         <form action="{% url login-view %}" method="POST">
 
             <div class="form-row connect-amazon">
