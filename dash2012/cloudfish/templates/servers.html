@@ -101,7 +101,11 @@
                         <div class="server-actions">
                             <a class="actions-trigger">&#9660;</a>
                             <ul class="actions-dropdown">
-                                <li><a>Stop</a></li>
+                                {% if server.state == 0 %}
+                                    <li><a>Stop</a></li>
+                                {% else %}
+                                    <li><a>Start</a></li>
+                                {% endif %}
                                 <li><a>Remove</a></li>
                             </ul>
                         </div>
