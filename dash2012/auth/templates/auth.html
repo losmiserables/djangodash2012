@@ -3,13 +3,19 @@
 {% block content %}
 
     <div class="auth-block">
-        <h1>Login</h1>
+      <h1>Login</h1>
+
+        {% if errors %}
         <div class="feedback error">
-            <span>Ops, an error occurred creating your account.</span>
+          <span>{{ errors }}</span>
         </div>
+        {% endif %}
+
+        {% if msgs %}
         <div class="feedback success">
-            <span>Yeeha! Success fishing your cloud servers.</span>
+          <span>{{ msgs }}</span>
         </div>
+        {% endif %}
         <form action="{% url login-view %}" method="POST">
             {% csrf_token %}
 
