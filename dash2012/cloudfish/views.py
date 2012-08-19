@@ -142,3 +142,4 @@ def connect(request):
         return render(request, 'connect.html', c)
 
     return render(request, 'connect.html', c)
+
