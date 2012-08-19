@@ -2,6 +2,13 @@
 
 
 {%  block content %}
+
+    {%  if errors %}
+        <div class="feedback error">
+            <span>{{  errors }}</span>
+        </div>
+    {%  endif %}
+
     <div class="auth-block">
         <h1>Create your account</h1>
         <form action="{% url register-view %}" method="post">

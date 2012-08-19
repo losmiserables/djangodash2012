@@ -5,11 +5,10 @@ when you run "manage.py test".
 Replace this with more appropriate tests for your application.
 """
 
-from django.test import TestCase
+from django.test import TestCase, Client
+from auth.models import Account
 from cloudfish.models import Cloud
 from cloudfish import CLOUD_RACKSPACE
-from auth.models import Account
-from django.contrib.auth.models import User
 from django.core.signing import BadSignature
 
 
@@ -18,9 +17,7 @@ class KeyEncriptiontest(TestCase):
         """
         Tests that the auth_data is correctly signed
         """
-        user = User(username='daltonmatos', password='mypassword')
-        account = Account()
-        account.user = user
+        account = Account(username='daltonmatos', password='mypassword')
         cloud = Cloud(type=CLOUD_RACKSPACE, account=account)
 
         auth_data = {'user': 'username', 'key': 'my_api_key'}
@@ -30,3 +27,12 @@ class KeyEncriptiontest(TestCase):
         self.assertRaises(BadSignature, cloud.decode_auth_data, salt='worng-salt')
         self.assertEquals(auth_data, cloud.decode_auth_data(salt='mypassword'))
 
+
+class EmailValidationTest(TestCase):
+    def test_unique_email(self):
+        account = Account(email="my@email.com", password="mypassword")
+        account.save()
+        client = Client()
+        response = client.post("/register", {"email": "my@email.com", "password": "mypassword", "confirm-password": "mypassword"})
+
+        self.assertIn("This email is already in use.", response.content)
