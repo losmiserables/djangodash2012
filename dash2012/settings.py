@@ -13,14 +13,14 @@ ADMINS = (
 MANAGERS = ADMINS
 
 ROOT = os.path.abspath(os.path.dirname(__file__))
-EXTRA_LIBS_DIR  = os.path.join(ROOT, 'lib')
+EXTRA_LIBS_DIR = os.path.join(ROOT, 'lib')
 
 sys.path.append(EXTRA_LIBS_DIR)
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': os.path.join(ROOT, 'cloudfish.sqlite'),                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': os.environ.get('SQLITE_PATH', os.path.join(ROOT, 'cloudfish.sqlite')),  # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
