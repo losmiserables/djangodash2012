@@ -3,7 +3,6 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
-from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_protect
 from auth.models import Account
 from cloudfish import CLOUD_AWS, CLOUD_RACKSPACE
@@ -12,13 +11,42 @@ from cloudfish.models import Cloud
 
 def index(request):
     if request.user.is_authenticated():
-        return render(request, 'index_loggedin.html', {'greetings': 'Hi!'})
+        return render(request, 'index_loggedin.html')
     return render(request, 'index.html')
 
 
 @login_required
 def account(request):
-    return render(request, 'account.html', {'active_account': 'active'})
+    c = {}
+    c.update({'active_account': 'active'})
+    c['errors'] = []
+    c['msgs'] = []
+    if request.POST:
+
+        current_passwd = request.POST['cpasswd']
+        password = request.POST['password']
+        confirm_password = request.POST['confirm_password']
+
+        if password != confirm_password:
+            c['errors'].append("New password don't match")
+        if not request.user.check_password(current_passwd):
+            c['errors'].append("Current password don't match")
+
+        if not c['errors']:
+            request.user.set_password(password)
+            request.user.save()
+            # We need to re-encrypt all connected Clouds auth data
+            account = Account.objects.filter(id=request.user.id)
+            connected_clouds = Cloud.objects.filter(account=account)
+            for cloud in connected_clouds:
+                old_data = cloud.decode_auth_data(salt=current_passwd)
+                cloud.add_auth_data(salt=password, **old_data)
+                cloud.save()
+            c['msgs'].append("Account saved")
+
+        return render(request, 'account.html', c)
+
+    return render(request, 'account.html', c)
 
 
 @login_required
@@ -61,7 +89,7 @@ def connect(request):
     if request.POST:
         c = {}
         c['errors'] = []
-        if not request.session['clouds']:
+        if not request.session.get('clouds', None):
             request.session['clouds'] = {}
 
         passwd = request.POST['password']

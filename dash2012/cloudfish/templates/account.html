@@ -3,24 +3,42 @@
 {% block content %}
     <div class="main-account">
 
-        <div id="account-block">
 
-            <form action="{% url register-view %}" method="post">
-                <h2>Edit your account</h2>
+        {% if errors %}
+        <div class="feedback error">
+          {% for e in errors %}
+          <span>{{ e }}</span> <br/>
+          {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if msgs %}
+        <div class="feedback success">
+          {% for m in msgs %}
+          <span>{{ m }}</span> <br/>
+          {% endfor %}
+          </div>
+        {% endif %}
+
+        <div id="account-block">
+          <form action="{% url myaccount-view %}" method="post">
+            {% csrf_token %}
+              <h2>Edit your account</h2>
+              <h3> Change password </h3>
                 <div class="account-info">
                     <div class="form-row">
-                        <label for="email">E-mail:</label>
-                        <input required type="email" name="email" id="email"/>
+                        <label for="cpasswd">Current password:</label>
+                        <input required type="text" name="cpasswd" id="cpasswd"/>
                     </div>
 
                     <div class="form-row">
-                        <label for="password">Password:</label>
+                        <label for="password">New Password:</label>
                         <input required type="password" name="password" id="password"/>
                     </div>
 
                     <div class="form-row">
-                        <label for="confirm-password">Confirm password:</label>
-                        <input required type="password" name="confirm-password" id="confirm-password"/>
+                        <label for="confirm_password">Confirm password:</label>
+                        <input required type="password" name="confirm_password" id="confirm_password"/>
                     </div>
                 </div>
 
