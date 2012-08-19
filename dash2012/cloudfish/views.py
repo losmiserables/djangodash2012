@@ -22,7 +22,6 @@ def account(request):
 
 
 @login_required
-@cache_page(60 * 5)
 def servers(request):
     user = request.user
     account = Account.objects.get(id=user.id)
@@ -79,6 +78,7 @@ def connect(request):
             cloud = Cloud(type=CLOUD_RACKSPACE, account=account)
             cloud.add_auth_data(salt=passwd, cloud_login=rackspace_username, cloud_password=rackspace_api_key)
             cloud.save()
+            request.session['clouds'][CLOUD_RACKSPACE] = cloud.decode_auth_data(salt=passwd)
 
         request.session.modified = True
         return HttpResponseRedirect(reverse("myservers-view"))
