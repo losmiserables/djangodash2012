@@ -356,7 +356,11 @@ h4 {font-size: 18px;}
 
 .popup-actions { float: right; margin: 20px 0 10px;}
 .popup-actions .blue-btn {margin-right: 0;}
-.popup-cancel {margin-top: 10px; }
+.popup-cancel {
+    float: right;
+    margin: 30px 10px 0 0;
+    padding: 4px 8px 3px;
+}
 
 /* FORM */
 
