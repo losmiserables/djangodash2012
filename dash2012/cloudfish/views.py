@@ -64,9 +64,14 @@ def connect(request):
         if not request.session['clouds']:
             request.session['clouds'] = {}
 
-        passwd = request.session['passwd']
+        passwd = request.POST['password']
         user = request.user
         account = Account.objects.get(id=user.id)
+
+        if not account.check_password(passwd):
+            c['errors'].append("Wrong password, please check")
+            return render(request, 'connect.html', c)
+
         if "aws_key_id" in request.POST and request.POST["aws_key_id"]:
             aws_key_id = request.POST["aws_key_id"]
             aws_secret_key = request.POST["aws_secret_key"]
