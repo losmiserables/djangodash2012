@@ -427,10 +427,14 @@ button.blue-btn { float: right; padding: 4px 8px; margin:10px 0 0 0; }
 }
 
 #connect-clouds {
-    width: 425px;
+    width: 442px;
 }
-#connect-clouds img { margin-right: 25px;}
+#connect-clouds .form-row img { margin-right: 42px;}
 #connect-clouds img, #connect-clouds input { float: left; }
 
 #connect-clouds .form-row { border-bottom: 1px solid #eee; margin-bottom: 25px; padding-bottom: 25px; }
 #connect-clouds .btn { margin-top: 10px; }
+
+#connect-clouds .secure-msg { margin-bottom: 30px; }
+
+#connect-clouds .secure-text { float: left; margin: 1px 0 0 10px; }
