@@ -5,10 +5,11 @@
 <div class="popup-overlay"></div>
 <div class="popup-holder">
     <h2>Add server</h2>
-    <form class="popup-form">
+    <form class="popup-form" method="POST" action={% url create-server %}>
+    {% csrf_token %}
         <div class="form-row create-onservice">
             <div class="select-onservice">
-                <input type="radio"/>
+                <input type="radio" name="provider" value="AM"/>
                 <label>
                     <span class="amazon-icon"></span>
                     <span class="choose-service">Amazon</span>
@@ -17,7 +18,7 @@
             </div>
 
             <div class="select-onservice">
-                <input type="radio"/>
+                <input type="radio" name="provider" value="RS"/>
                 <label>
                     <span class="rackspace-icon"></span>
                     <span class="choose-service">Rackspace</span>
@@ -28,24 +29,35 @@
         </div>
         <div class="form-row">
             <label>Name:</label>
-            <input type="text"/>
+            <input type="text" name="node-name"/>
         </div>
         <div class="form-row">
             <label>Image:</label>
-            <select>
+            <select name="image">
                 {% for provider,images in images.items %}
                     {% for image in images %}
-                        <option>{{ image.name|truncatechars:30 }}</option>
+                        <option value="{{ image.id }}">{{ image.name|truncatechars:30 }}</option>
                     {% endfor %}
                 {% endfor %}
             </select>
         </div>
         <div class="form-row">
             <label>Size:</label>
-            <select>
+            <select name="size">
                 {% for provider,sizes in sizes.items %}
                     {% for size in sizes %}
-                        <option>{{ size.name }}</option>
+                        <option value="{{ size.id }}">{{ size.name }}</option>
+                    {% endfor %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label>Region:</label>
+            <select name="location">
+                {% for provider,locations in regions.items %}
+                    {% for location in locations %}
+                        <option value="{{ location.id }}">{{ location.name }}</option>
                     {% endfor %}
                 {% endfor %}
             </select>
@@ -53,7 +65,7 @@
 
         <div class="popup-actions">
             <a class="popup-cancel btn">Cancel</a>
-            <a class="popup-save blue-btn">Add</a>
+            <button type="submit" class="popup-save blue-btn">Add</button>
             <div class="clear"></div>
         </div>
 

@@ -56,7 +56,6 @@ class Cloud(models.Model):
             Driver = get_driver(SUPPORTED_PROVIDERS[self.type])
             conn = Driver(cloud_login, cloud_password)
 
-
             return conn.list_images()
 
     def get_sizes(self, cloud_login, cloud_password):
@@ -66,3 +65,15 @@ class Cloud(models.Model):
             conn = Driver(cloud_login, cloud_password)
 
             return conn.list_sizes()
+
+    def get_locations(self, cloud_login, cloud_password):
+        # FIXME: Amazon
+        if self.type == CLOUD_RACKSPACE:
+            Driver = get_driver(SUPPORTED_PROVIDERS[self.type])
+            conn = Driver(cloud_login, cloud_password)
+
+            return conn.list_locations()
+
+    def create_server(self, name, image, size, location, cloud_login, cloud_password):
+        print name, image, size, cloud_login, location, cloud_password
+        pass

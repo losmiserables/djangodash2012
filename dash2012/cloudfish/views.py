@@ -59,15 +59,18 @@ def servers(request):
     servers = {}
     images = {}
     sizes = {}
+    locations = {}
     for cloud in clouds:
         servers[cloud.type] = cloud.get_servers(**request.session["clouds"][cloud.type])
         images[cloud.type] = cloud.get_images(**request.session["clouds"][cloud.type])
         sizes[cloud.type] = cloud.get_sizes(**request.session["clouds"][cloud.type])
+        locations[cloud.type] = cloud.get_locations(**request.session["clouds"][cloud.type])
 
     return render(request, 'servers.html', {'active_servers': 'active',
                                             "servers": servers,
                                             "images": images,
-                                            "sizes": sizes
+                                            "sizes": sizes,
+                                            "regions": locations
                                             })
 
 
@@ -164,3 +167,21 @@ def disconnect(request):
 
 def notfound(request):
     return render(request, '404.html')
+
+
+@login_required
+@csrf_protect
+def create(request):
+    c = {}
+    if request.POST:
+        account = Account.objects.get(id=request.user.id)
+        provider = request.POST["provider"]
+        name = request.POST["node-name"]
+        image_id = request.POST["image"]
+        size_id = request.POST["size"]
+        location_id = request.POST["location"]
+
+        cloud = Cloud.objects.filter(account=account, type=provider)[0]
+        cloud.create_server(name=name, image=image_id, size=size_id, location=location_id, **request.session["clouds"][cloud.type])
+
+        return render(request, "servers.html", c)
