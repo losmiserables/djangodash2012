@@ -33,17 +33,21 @@
         <div class="form-row">
             <label>Image:</label>
             <select>
-                <option>Aloka (saved)</option>
-                <option>Eikelokura (saved)</option>
-                <option>makakaloka</option>
+                {% for provider,images in images.items %}
+                    {% for image in images %}
+                        <option>{{ image.name|truncatechars:30 }}</option>
+                    {% endfor %}
+                {% endfor %}
             </select>
         </div>
         <div class="form-row">
             <label>Size:</label>
             <select>
-                <option>Mem: 1.2Gb Disk: 80Gb</option>
-                <option>Mem: 1.7Gb Disk: 160Gb</option>
-                <option>Mem: 4.0Gb Disk: 750Gb</option>
+                {% for provider,sizes in sizes.items %}
+                    {% for size in sizes %}
+                        <option>{{ size.name }}</option>
+                    {% endfor %}
+                {% endfor %}
             </select>
         </div>
 

@@ -57,10 +57,18 @@ def servers(request):
     account = Account.objects.get(id=user.id)
     clouds = Cloud.objects.filter(account=account)
     servers = {}
+    images = {}
+    sizes = {}
     for cloud in clouds:
         servers[cloud.type] = cloud.get_servers(**request.session["clouds"][cloud.type])
+        images[cloud.type] = cloud.get_images(**request.session["clouds"][cloud.type])
+        sizes[cloud.type] = cloud.get_sizes(**request.session["clouds"][cloud.type])
 
-    return render(request, 'servers.html', {'active_servers': 'active', "servers": servers})
+    return render(request, 'servers.html', {'active_servers': 'active',
+                                            "servers": servers,
+                                            "images": images,
+                                            "sizes": sizes
+    })
 
 
 @csrf_protect

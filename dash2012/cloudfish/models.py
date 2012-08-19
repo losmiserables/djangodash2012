@@ -1,6 +1,6 @@
 from django.db import models
 from libcloud.compute.providers import get_driver
-from cloudfish import SUPPORTED_CLOUDS, SUPPORTED_PROVIDERS, CLOUD_AWS
+from cloudfish import SUPPORTED_CLOUDS, SUPPORTED_PROVIDERS, CLOUD_AWS, CLOUD_RACKSPACE
 from auth.models import Account
 from django.core import signing
 
@@ -49,3 +49,20 @@ class Cloud(models.Model):
             return True
         except Exception:
             return False
+
+    def get_images(self, cloud_login, cloud_password):
+        # FIXME: Amazon
+        if self.type == CLOUD_RACKSPACE:
+            Driver = get_driver(SUPPORTED_PROVIDERS[self.type])
+            conn = Driver(cloud_login, cloud_password)
+
+
+            return conn.list_images()
+
+    def get_sizes(self, cloud_login, cloud_password):
+        # FIXME: Amazon
+        if self.type == CLOUD_RACKSPACE:
+            Driver = get_driver(SUPPORTED_PROVIDERS[self.type])
+            conn = Driver(cloud_login, cloud_password)
+
+            return conn.list_sizes()
