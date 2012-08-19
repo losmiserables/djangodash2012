@@ -18,9 +18,17 @@ def login(r):
             if not Cloud.objects.filter(account=user).exists():
                 return HttpResponseRedirect(reverse('connect-view'))
 
-            return HttpResponseRedirect(reverse('myservers-view'))
+            # If we have at least one cloud, put its data in the user session.
+            r.session['clouds'] = {}
 
-    c['errors'] = "Login failed, please try again"
+            connected_clouds = Cloud.objects.filter(user=user)
+            for cloud in connected_clouds:
+                raise Exception()
+                r.session['clouds'][cloud.type] = cloud.decode_auth_data(salt=password)
+            return HttpResponseRedirect(reverse('myservers-view'))
+        else:
+            c['errors'] = "Login failed, please try again"
+
     return render(r, 'auth.html', c)
 
 
