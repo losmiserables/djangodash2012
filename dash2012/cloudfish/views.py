@@ -86,9 +86,10 @@ def register(request):
 
 @login_required
 def connect(request):
+    c = {'active_connect': 'active'}
     if request.POST:
-        c = {}
         c['errors'] = []
+        c['msgs'] = []
         if not request.session.get('clouds', None):
             request.session['clouds'] = {}
 
@@ -110,6 +111,7 @@ def connect(request):
             else:
                 cloud.save()
                 request.session['clouds'][CLOUD_AWS] = cloud.decode_auth_data(salt=passwd)
+                c['msgs'].append("Amazon AWS credentials saved")
 
         if "rackspace_username" in request.POST and request.POST["rackspace_username"]:
             rackspace_username = request.POST["rackspace_username"]
@@ -121,11 +123,12 @@ def connect(request):
             else:
                 cloud.save()
                 request.session['clouds'][CLOUD_RACKSPACE] = cloud.decode_auth_data(salt=passwd)
+                c['msgs'].append("Rackspace Open Cloud credentials saved")
 
         request.session.modified = True
         if c['errors']:
             return render(request, 'connect.html', c)
 
-        return HttpResponseRedirect(reverse("myservers-view"))
+        return render(request, 'connect.html', c)
 
-    return render(request, 'connect.html')
+    return render(request, 'connect.html', c)

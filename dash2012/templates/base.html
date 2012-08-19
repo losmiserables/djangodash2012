@@ -40,7 +40,7 @@
                   </a>
                     <div class="welcome-user">
                         {% if user.is_authenticated %}
-                            <span class="username">{{ greeting }} {{ user.username }}</span>
+                            <span class="username">{{ user.username }}</span>
                             <span class="logout"><a href="{% url logout-view %}">logout</a></span>
                         {% else %}
                             <a class="login" href="{% url login-view %}">Login</a>
@@ -56,6 +56,7 @@
                         <ul class="nav">
                             <li><a href="{% url myservers-view %}" class="{{ active_servers }}">My servers</a></li>
                             <li><a href="{% url myaccount-view %}" class="{{ active_account }}">My account</a></li>
+                            <li><a href="{% url connect-view %}" class="{{ active_connect }}">Connect</a></li>
                         </ul>
 
                     </div>
