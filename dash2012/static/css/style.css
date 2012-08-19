@@ -435,20 +435,6 @@ button.blue-btn { float: right; padding: 4px 8px; margin:10px 0 0 0; }
     border: 1px solid #ACE2A7;
 }
 
-.connect-clouds {
-    width: 442px;
-}
-.connect-clouds .form-row img { float: left; margin-right: 42px; margin-top: 34px;}
-.connect-clouds .connect-fields { float: left; }
-.connect-clouds .connect-fields input{ margin-bottom: 15px;}
-
-.connect-clouds .form-row { border-bottom: 1px solid #eee; margin-bottom: 25px; padding-bottom: 15px; }
-.connect-clouds .btn { margin-top: 10px; }
-
-.secure-msg { margin-bottom: 30px; }
-.secure-msg img, .secure-text { float: left; }
-
-.connect-clouds .secure-text { float: left; margin: 1px 0 0 10px; width: 310px; }
 
 
 /* My account */
@@ -458,13 +444,13 @@ button.blue-btn { float: right; padding: 4px 8px; margin:10px 0 0 0; }
 }
 .account-info {}
 
-#account-block {
+.account-block {
     background: #F0F0F0;
     padding: 10px 40px 20px;
     width: 200px;
 }
-#account-block .secure-msg { float: left; }
-#account-block .secure-text {
+.account-block .secure-msg { float: left; }
+.account-block .secure-text {
     margin: 1px 0 0 10px;
     width: 170px;
 }
@@ -472,6 +458,30 @@ button.blue-btn { float: right; padding: 4px 8px; margin:10px 0 0 0; }
 .cloud-info { width: 345px;; }
 .cloud-info .connect-amazon { border-bottom: 1px solid #ddd; }
 .cloud-info .connect-rackspace { border-bottom: 0; }
+
+.connect-clouds .account-block { width: 342px; }
+.connect-clouds .form-row { border-bottom: 1px solid #ddd; }
+
+
+/* Connect */
+
+.connect-clouds {
+    width: 442px;
+}
+.connect-clouds .form-row img { float: left; margin-right: 42px; margin-top: 34px;}
+.connect-clouds .connect-fields { float: left; }
+.connect-clouds .connect-fields input{ margin-bottom: 15px;}
+
+.connect-clouds .form-row { border-bottom: 1px solid #ddd; margin-bottom: 25px; padding-bottom: 15px; }
+.connect-clouds .btn { margin-top: 10px; }
+
+.secure-msg { margin-bottom: 30px; }
+.secure-msg img, .secure-text { float: left; }
+
+.connect-clouds .secure-text { float: left; margin: 0 0 0 10px; width: 104px; }
+.connect-clouds .secure-msg { margin: 0 10px 0 0; width: 131px; }
+.connect-clouds .secure-msg img { margin: 0; }
+
 
 /* Home */
 

@@ -2,75 +2,80 @@
 
 {% block content %}
 
-
-    <div class="auth-block connect-clouds">
-
-      <h1>Connect your clouds</h1>
-
-        {% if errors %}
-        <div class="feedback error">
-          {% for e in errors %}
-          <span>{{ e }}</span> <br/>
-          {% endfor %}
-          </div>
-        {% endif %}
-
-        {% if msgs %}
-        <div class="feedback success">
-          {% for m in msgs %}
-          <span>{{ m }}</span> <br/>
-          {% endfor %}
-          </div>
-        {% endif %}
+    <div class="main-account">
+        <div class="connect-clouds">
 
 
-        <form action="{% url connect-view %}" method="POST">
-            {% csrf_token %}
 
-            <div class="form-row connect-amazon">
-                <img src="{{STATIC_URL}}img/amazon-aws.png"/>
+            <div class="account-block">
+                <h2>Connect your clouds</h2>
+                {% if errors %}
+                    <div class="feedback error">
+                        {% for e in errors %}
+                            <span>{{ e }}</span> <br/>
+                        {% endfor %}
+                    </div>
+                {% endif %}
 
-                <div class="connect-fields">
-                    <label>Your Amazon AWS access key id:</label>
-                    <input type="text" name="aws_key_id" value=""/>
+                {% if msgs %}
+                    <div class="feedback success">
+                        {% for m in msgs %}
+                            <span>{{ m }}</span> <br/>
+                        {% endfor %}
+                    </div>
+                {% endif %}
 
-                    <label>Your Amazon AWS key:</label>
-                     <input type="password" name="aws_secret_key" value=""/>
-                </div>
+                <form action="{% url connect-view %}" method="POST">
+                    {% csrf_token %}
 
-                <div class="clear"></div>
+                    <div class="form-row connect-amazon">
+                        <img src="{{STATIC_URL}}img/amazon-aws.png"/>
+
+                        <div class="connect-fields">
+                            <label>Your Amazon AWS access key id:</label>
+                            <input type="text" name="aws_key_id" value=""/>
+
+                            <label>Your Amazon AWS key:</label>
+                             <input type="password" name="aws_secret_key" value=""/>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="form-row connect-rackspace">
+                        <img src="{{STATIC_URL}}img/rackspace.png"/>
+                        <div class="connect-fields">
+                            <label>Your Rackspace username:</label>
+                            <input type="text" name="rackspace_username" value=""/>
+
+                            <label>Your Rackspace key:</label>
+                            <input type="password" name="rackspace_api_key" value=""/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="form-row">
+
+                        <p class="secure-msg">
+                            <img src="{{STATIC_URL}}img/secure.png"/>
+                            <span class="secure-text">All keys are encrypted using your current password as a salt. </span>
+                            <span class="clear"></span>
+                        </p>
+                        <div class="connect-fields">
+                            <label>Please confirm your password:</label>
+                            <input type="password" name="password" value=""/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+
+                    <a class="btn" href="/servers">Connect later</a>
+                    <button type="submit" name="Login" class="blue-btn">Go fish!</button>
+                    <div class="clear"></div>
+                </form>
             </div>
+        </div>
 
-            <div class="form-row connect-rackspace">
-                <img src="{{STATIC_URL}}img/rackspace.png"/>
-                <div class="connect-fields">
-                    <label>Your Rackspace username:</label>
-                    <input type="text" name="rackspace_username" value=""/>
-
-                    <label>Your Rackspace key:</label>
-                    <input type="password" name="rackspace_api_key" value=""/>
-                </div>
-                <div class="clear"></div>
-            </div>
-
-            <div class="form-row">
-                <div class="connect-fields">
-                    <label>Please confirm your password:</label>
-                    <input type="password" name="password" value=""/>
-                </div>
-                <div class="clear"></div>
-                <p class="secure-msg">
-                    <img src="{{STATIC_URL}}img/secure.png"/>
-                    <span class="secure-text">All keys are encrypted using your current password as a salt. </span>
-                    <span class="clear"></span>
-                </p>
-            </div>
-
-
-            <a class="btn" href="/servers">Connect later</a>
-            <button type="submit" name="Login" class="blue-btn">Go fish!</button>
-            <div class="clear"></div>
-        </form>
     </div>
 
 {%  endblock %}
