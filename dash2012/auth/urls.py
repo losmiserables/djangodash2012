@@ -5,6 +5,7 @@ import os
 urlpatterns = patterns('auth.views',
     url(r'^login$', 'login', name='login-view'),
     url(r'^logout$', 'logout', name='logout-view'),
+    url(r'^connect$', 'connect', name='connect-view'),
     # url(r'^dash2012/', include('dash2012.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

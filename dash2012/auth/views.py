@@ -20,3 +20,6 @@ def login(r):
 def logout(request):
     auth_logout(request)
     return HttpResponseRedirect(reverse('index-view'))
+
+def connect(request):
+    return render(request, 'connect.html')

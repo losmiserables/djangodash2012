@@ -297,6 +297,7 @@ h4 {font-size: 18px;}
     font-weight: bold;
     margin-right: 10px;
     padding: 3px 8px;
+    text-decoration: none;
 
     border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -400,7 +401,7 @@ h4 {font-size: 18px;}
 
 .auth-block label {font-size: 14px;}
 
-button.blue-btn { float: right; padding: 6px 8px; margin-right: 0; }
+button.blue-btn { float: right; padding: 4px 8px; margin:10px 0 0 0; }
 
 /* feedback */
 
@@ -424,3 +425,12 @@ button.blue-btn { float: right; padding: 6px 8px; margin-right: 0; }
     background: #D4FFD1;
     border: 1px solid #ACE2A7;
 }
+
+#connect-clouds {
+    width: 425px;
+}
+#connect-clouds img { margin-right: 25px;}
+#connect-clouds img, #connect-clouds input { float: left; }
+
+#connect-clouds .form-row { border-bottom: 1px solid #eee; margin-bottom: 25px; padding-bottom: 25px; }
+#connect-clouds .btn { margin-top: 10px; }

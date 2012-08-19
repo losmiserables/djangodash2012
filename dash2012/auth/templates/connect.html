@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="feedback success">
+        <span>Yeeha! Success fishing your cloud servers.</span>
+    </div>
+    <div id="connect-clouds" class="auth-block">
+        <h1>Connect your clouds</h1>
+        <form action="{% url login-view %}" method="POST">
+
+            <div id="connect-amazon" class="form-row">
+                <img src="{{STATIC_URL}}img/amazon-aws.png"/>
+                <label>Your Amazon AWS key:</label>
+                <input type="text" value=""/>
+                <div class="clear"></div>
+            </div>
+
+            <div class="form-row">
+                <img src="{{STATIC_URL}}img/rackspace.png"/>
+                <label>Your Rackspace key:</label>
+                <input type="text" value=""/>
+                <div class="clear"></div>
+            </div>
+            <a class="btn" href="/servers">Connect later</a>
+            <button type="submit" name="Login" class="blue-btn">Go fish!</button>
+            <div class="clear"></div>
+        </form>
+    </div>
+
+{%  endblock %}
