@@ -10,6 +10,8 @@ from auth.models import Account
 from cloudfish.models import Cloud
 from cloudfish import CLOUD_RACKSPACE
 from django.core.signing import BadSignature
+from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 
 
 class KeyEncriptiontest(TestCase):
@@ -36,3 +38,16 @@ class EmailValidationTest(TestCase):
         response = client.post("/register", {"email": "my@email.com", "password": "mypassword", "confirm-password": "mypassword"})
 
         self.assertIn("This email is already in use.", response.content)
+
+class ConnectOnFirstLoginTest(TestCase):
+    def test_redirect_to_connect_if_no_clouds_found(self):
+        """
+        If the user dows not have any connected cloud backend, redirect to the
+        connect view
+        """
+        user = User.objects.create_user(username='newuser', password='pass')
+        user.save()
+
+        client = Client()
+        response = client.post("/auth/login", {'username': 'newuser', 'password': 'pass'})
+        self.assertIn(reverse('connect-view'), response['Location'])
