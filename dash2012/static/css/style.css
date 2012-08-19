@@ -447,25 +447,28 @@ button.blue-btn { float: right; padding: 4px 8px; margin:10px 0 0 0; }
 .connect-clouds .btn { margin-top: 10px; }
 
 .secure-msg { margin-bottom: 30px; }
-.secure-msg img { float: left; }
+.secure-msg img, .secure-text { float: left; }
 
 .connect-clouds .secure-text { float: left; margin: 1px 0 0 10px; width: 310px; }
 
 
 /* My account */
 
-.account-info, .cloud-info { float: left; }
-.account-info {
-    border-right: 1px solid #ddd;
-    margin-right: 35px;
-    padding-right: 35px; }
+.main-account {
+    background: #F6F6F6;
+}
+.account-info {}
 
 #account-block {
     background: #F0F0F0;
-    padding: 10px 20px;
-    width: auto;
+    padding: 10px 40px 20px;
+    width: 200px;
 }
 #account-block .secure-msg { float: left; }
+#account-block .secure-text {
+    margin: 1px 0 0 10px;
+    width: 170px;
+}
 
 .cloud-info { width: 345px;; }
 .cloud-info .connect-amazon { border-bottom: 1px solid #ddd; }
