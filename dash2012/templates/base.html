@@ -15,7 +15,13 @@
     <body>
         <div class="wrap">
             <div id="header">
-                <a href="/" class="logo"><img alt="cloudfish" src="{{STATIC_URL}}img/logo.png"/></a>
+              {% if user.is_authenticated %}
+              <a href="{% url myservers-view %}" class="logo">
+              {% else %}
+              <a href="{% url index-view %}" class="logo">
+              {% endif %}
+                <img alt="cloudfish" src="{{STATIC_URL}}img/logo.png"/>
+              </a>
                 <div class="welcome-user">
                     {% if user.is_authenticated %}
                         <span class="username">{{ greeting }} {{ user.username }}</span>
