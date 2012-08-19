@@ -2,7 +2,6 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
-from django.contrib.auth.decorators import login_required
 from cloudfish.models import Cloud
 
 
@@ -36,7 +35,3 @@ def logout(request):
     auth_logout(request)
     return HttpResponseRedirect(reverse('index-view'))
 
-
-@login_required
-def connect(request):
-    return render(request, 'connect.html')

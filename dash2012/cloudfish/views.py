@@ -44,3 +44,8 @@ def register(request):
         return HttpResponseRedirect(reverse("connect-view"))
 
     return render(request, 'register.html', c)
+
+
+@login_required
+def connect(request):
+    return render(request, 'connect.html')
