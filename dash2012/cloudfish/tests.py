@@ -30,6 +30,25 @@ class KeyEncriptiontest(TestCase):
         self.assertEquals(auth_data, cloud.decode_auth_data(salt='mypassword'))
 
 
+class PrepareSessionTest(TestCase):
+    def test_put_auth_data_in_session(self):
+        user = Account.objects.create_user(username='name@mail.com', password='pass')
+        user.save()
+
+        auth_data = {'user': 'awsuser', 'key': 'mykey'}
+
+        aws = Cloud(type="AM", account=user)
+        aws.add_auth_data(salt='pass', **auth_data)
+        aws.save()
+
+        self.assertEquals(1, len(Cloud.objects.filter(account=user)))
+
+        client = Client()
+        self.assertTrue(client.login(username='name@mail.com', password='pass'))
+        self.assertEquals('', client.session['passwd'])
+        self.assertEquals(auth_data, client.session['clouds']['AM'])
+
+
 class EmailValidationTest(TestCase):
     def test_unique_email(self):
         account = Account(email="my@email.com", password="mypassword")
