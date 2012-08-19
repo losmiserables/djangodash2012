@@ -24,7 +24,6 @@ def login(r):
 
             connected_clouds = Cloud.objects.filter(user=user)
             for cloud in connected_clouds:
-                raise Exception()
                 r.session['clouds'][cloud.type] = cloud.decode_auth_data(salt=password)
             return HttpResponseRedirect(reverse('myservers-view'))
         else:
