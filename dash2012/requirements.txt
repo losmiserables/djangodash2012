@@ -1,0 +1,7 @@
+Django==1.4.1
+Fabric==1.4.3
+apache-libcloud==0.11.1
+pycrypto==2.6
+python-memcached==1.48
+ssh==1.7.14
+wsgiref==0.1.2
