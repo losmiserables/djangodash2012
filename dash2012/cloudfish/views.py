@@ -28,7 +28,7 @@ def servers(request):
     clouds = Cloud.objects.filter(account=account)
     servers = []
     for cloud in clouds:
-        servers += cloud.get_servers()
+        servers += cloud.get_servers(**request.session["clouds"][cloud.type])
 
     return render(request, 'servers.html', {'active_servers': 'active', "servers": servers})
 
@@ -64,7 +64,7 @@ def connect(request):
         passwd = request.session['passwd']
         user = request.user
         account = Account.objects.get(id=user.id)
-        if "aws_key_id" in request.POST:
+        if "aws_key_id" in request.POST and request.POST["aws_key_id"]:
             aws_key_id = request.POST["aws_key_id"]
             aws_secret_key = request.POST["aws_secret_key"]
             cloud = Cloud(type=CLOUD_AWS, account=account)
@@ -72,7 +72,7 @@ def connect(request):
             cloud.save()
             request.session['clouds'][CLOUD_AWS] = cloud.decode_auth_data(salt=passwd)
 
-        if "rackspace_username" in request.POST:
+        if "rackspace_username" in request.POST and request.POST["rackspace_username"]:
             rackspace_username = request.POST["rackspace_username"]
             rackspace_api_key = request.POST["rackspace_api_key"]
             cloud = Cloud(type=CLOUD_RACKSPACE, account=account)
