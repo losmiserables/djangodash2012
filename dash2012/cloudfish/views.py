@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
+from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_protect
 from auth.models import Account
 from cloudfish import CLOUD_AWS, CLOUD_RACKSPACE
@@ -21,8 +22,16 @@ def account(request):
 
 
 @login_required
+@cache_page(60 * 5)
 def servers(request):
-    return render(request, 'servers.html', {'active_servers': 'active'})
+    user = request.user
+    account = Account.objects.get(id=user.id)
+    clouds = Cloud.objects.filter(account=account)
+    servers = []
+    for cloud in clouds:
+        servers += cloud.get_servers()
+
+    return render(request, 'servers.html', {'active_servers': 'active', "servers": servers})
 
 
 @csrf_protect
