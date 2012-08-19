@@ -68,7 +68,7 @@ def servers(request):
                                             "servers": servers,
                                             "images": images,
                                             "sizes": sizes
-    })
+                                            })
 
 
 @csrf_protect
@@ -140,18 +140,23 @@ def connect(request):
             return render(request, 'connect.html', c)
 
         return render(request, 'connect.html', c)
+    else:
+        # GET
+        print "GET"
+        c['connected'] = {}
+        account = Account.objects.get(id=request.user.id)
+        connected_clouds = Cloud.objects.filter(account=account)
+        for cloud in connected_clouds:
+            c['connected'][cloud.type] = True
 
     return render(request, 'connect.html', c)
 
 
 @login_required
 def disconnect(request):
-    c = {}
-    c['msgs'] = []
-    if request.POST:
-        account = Account.objects.get(id=request.user.id)
-        cloud = request.POST['cloud']
-        if Cloud.objects.filter(type=cloud, account=account).exists():
-            Cloud.objects.filter(type=cloud, account=account).delete()
-            c['msgs'].append('Cloud sucessfully disconnected')
-    return render(request, 'connect.html', c)
+    account = Account.objects.get(id=request.user.id)
+    cloud = request.GET['cloud']
+    print cloud
+    if Cloud.objects.filter(type=cloud, account=account).exists():
+        Cloud.objects.filter(type=cloud, account=account).delete()
+    return HttpResponseRedirect(reverse('connect-view'))

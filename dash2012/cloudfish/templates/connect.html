@@ -30,8 +30,13 @@
 
                     <div class="form-row connect-amazon">
                         <div class="connect-logo">
-                            <img src="{{STATIC_URL}}img/amazon-aws.png"/>
-                            <span class="connect-status connected">	&#10003; Connected</span>
+                          <img src="{{STATIC_URL}}img/amazon-aws.png"/>
+                            {% if connected.AM %}
+                              <span class="connect-status connected">	&#10003; Connected</span>
+                              <a class="disconnect-action" href="{% url disconnect-view %}?cloud=AM">Disconnect</a>
+                            {% else %}
+                              <span class="connect-status disconnected">Disconnected</span>
+                            {% endif %}
 
                         </div>
 
@@ -47,14 +52,18 @@
 
 
                         <div class="clear"></div>
-                        <a class="disconnect-action">Disconnect</a>
                     </div>
 
                     <div class="form-row connect-rackspace">
 
                         <div class="connect-logo">
                             <img src="{{STATIC_URL}}img/rackspace.png"/>
-                            <span class="connect-status disconnected">Disconnected</span>
+                            {% if connected.RS %}
+                              <span class="connect-status connected">	&#10003; Connected</span>
+                              <a class="disconnect-action" href="{% url disconnect-view %}?cloud=RS">Disconnect</a>
+                            {% else %}
+                              <span class="connect-status disconnected">Disconnected</span>
+                            {% endif %}
                         </div>
 
 
