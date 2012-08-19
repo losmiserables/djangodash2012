@@ -106,7 +106,7 @@
     {%  for provider, nodes in servers.items %}
         {% if provider == "AM" %}
             {%  for server in nodes %}
-                <tr class={% cycle "amazon-row" "alt amazon-row"%}>
+                <tr class="{% cycle 'alt' '_noalt'%} amazon-row">
                     <td><span class="amazon-icon"></span></td>
                     <td>{{ server.name }}</td>
                     <td>{{ server.public_ip.0 }}</td>
@@ -134,7 +134,7 @@
             {% endfor %}
         {%  elif provider == "RS" %}
             {%  for server in nodes %}
-                <tr class={% cycle "rackspace-row" "alt rackspace-row"%}>
+                <tr class="{% cycle 'alt' '_noalt' %} rackspace-row">
                     <td><span class="rackspace-icon"></span></td>
                     <td>{{ server.name }}</td>
                     <td>{{ server.public_ip.0 }}</td>
