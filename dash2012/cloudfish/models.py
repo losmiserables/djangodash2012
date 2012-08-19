@@ -76,4 +76,13 @@ class Cloud(models.Model):
 
     def create_server(self, name, image, size, location, cloud_login, cloud_password):
         print name, image, size, cloud_login, location, cloud_password
-        pass
+        if self.type == CLOUD_RACKSPACE:
+            Driver = get_driver(SUPPORTED_PROVIDERS[self.type])
+            conn = Driver(cloud_login, cloud_password)
+            images = conn.list_images()
+            sizes = conn.list_sizes()
+            locations = conn.list_locations()
+            image = [img for img in images if img.id==image][0]
+            size = [sz for sz in sizes if sz.id==size][0]
+            location = [loc for loc in locations if loc.id==location][0]
+            return conn.create_node(name=name, image=image, size=size, location=location)
