@@ -97,7 +97,8 @@ h4 {font-size: 18px;}
 #footer {
     background: #4b4b4b;
     height: 200px;
-    position: absolute;
+    margin-top: 80px;
+    position: relative;
     bottom: 0;
     width: 100%;
 }
