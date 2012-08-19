@@ -463,12 +463,39 @@ button.blue-btn { float: right; padding: 4px 8px; margin:10px 0 0 0; }
 .connect-clouds .form-row { border-bottom: 1px solid #ddd; }
 
 
+
 /* Connect */
 
 .connect-clouds {
     width: 442px;
 }
-.connect-clouds .form-row img { float: left; margin-right: 42px; margin-top: 34px;}
+.connect-clouds .connect-logo { float: left; margin-right: 42px; margin-top: 16px;}
+.connect-clouds .connect-logo img { display: block; margin-bottom: 15px; }
+.connect-logo .connect-status {
+    color: #FFFFFF;
+    display: block;
+
+    border-radius: 3px;
+    margin-bottom: 5px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+.connect-logo .connect-status.connected {
+    background:#5DBE16;
+    padding: 1px 6px;
+}
+.connect-logo .connect-status.disconnected {
+    background:#d93b3b;
+    padding: 1px 6px;
+}
+
+.disconnect-action {
+    cursor: pointer;
+    display: block;
+    text-decoration: underline;
+
+}
+
 .connect-clouds .connect-fields { float: left; }
 .connect-clouds .connect-fields input{ margin-bottom: 15px;}
 
@@ -481,6 +508,8 @@ button.blue-btn { float: right; padding: 4px 8px; margin:10px 0 0 0; }
 .connect-clouds .secure-text { float: left; margin: 0 0 0 10px; width: 104px; }
 .connect-clouds .secure-msg { margin: 0 10px 0 0; width: 131px; }
 .connect-clouds .secure-msg img { margin: 0; }
+
+.connect-status { float: left; }
 
 
 /* Home */

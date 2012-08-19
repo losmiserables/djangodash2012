@@ -29,7 +29,12 @@
                     {% csrf_token %}
 
                     <div class="form-row connect-amazon">
-                        <img src="{{STATIC_URL}}img/amazon-aws.png"/>
+                        <div class="connect-logo">
+                            <img src="{{STATIC_URL}}img/amazon-aws.png"/>
+                            <span class="connect-status connected">	&#10003; Connected</span>
+
+                        </div>
+
 
                         <div class="connect-fields">
                             <label>Your Amazon AWS access key id:</label>
@@ -39,11 +44,20 @@
                              <input type="password" name="aws_secret_key" value=""/>
                         </div>
 
+
+
                         <div class="clear"></div>
+                        <a class="disconnect-action">Disconnect</a>
                     </div>
 
                     <div class="form-row connect-rackspace">
-                        <img src="{{STATIC_URL}}img/rackspace.png"/>
+
+                        <div class="connect-logo">
+                            <img src="{{STATIC_URL}}img/rackspace.png"/>
+                            <span class="connect-status disconnected">Disconnected</span>
+                        </div>
+
+
                         <div class="connect-fields">
                             <label>Your Rackspace username:</label>
                             <input type="text" name="rackspace_username" value=""/>
