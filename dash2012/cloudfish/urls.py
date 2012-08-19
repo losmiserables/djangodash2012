@@ -6,4 +6,5 @@ urlpatterns = patterns('cloudfish.views',
     url(r'^servers$', 'servers', name='myservers-view'),
     url(r'^register$', 'register', name='register-view'),
     url(r'^connect', 'connect', name='connect-view'),
+    url(r'^dicconnect', 'dicconnect', name='disconnect-view'),
 )

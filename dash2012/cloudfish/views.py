@@ -143,3 +143,15 @@ def connect(request):
 
     return render(request, 'connect.html', c)
 
+
+@login_required
+def disconnect(request):
+    c = {}
+    c['msgs'] = []
+    if request.POST:
+        account = Account.objects.get(id=request.user.id)
+        cloud = request.POST['cloud']
+        if Cloud.objects.filter(type=cloud, account=account).exists():
+            Cloud.objects.filter(type=cloud, account=account).delete()
+            c['msgs'].append('Cloud sucessfully disconnected')
+    return render(request, 'connect.html', c)
