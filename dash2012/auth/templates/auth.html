@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <div class="feedback error">
+        <span>Ops, an error occurred creating your account.</span>
+    </div>
+    <div class="feedback success">
+        <span>Yeeha! Success fishing your cloud servers.</span>
+    </div>
     <div class="auth-block">
         <h1>Login</h1>
         <form action="{% url login-view %}" method="POST">

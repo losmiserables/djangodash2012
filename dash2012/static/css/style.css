@@ -401,3 +401,26 @@ h4 {font-size: 18px;}
 .auth-block label {font-size: 14px;}
 
 button.blue-btn { float: right; padding: 6px 8px; margin-right: 0; }
+
+/* feedback */
+
+.feedback {
+    font-weight: bold;
+    margin: 0 auto 30px;
+    padding: 8px 10px;
+    width: 600px;
+
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+.feedback.error {
+    background: #FFD1D1;
+    border: 1px solid #F2B3B3;
+}
+
+.feedback.success {
+    background: #D4FFD1;
+    border: 1px solid #ACE2A7;
+}
