@@ -225,6 +225,7 @@ h4 {font-size: 18px;}
     cursor: pointer;
     color: #fff;
     padding: 4px 10px;
+    text-decoration: none;
 }
 .server-actions .actions-dropdown li a:hover { background: #444; }
 
