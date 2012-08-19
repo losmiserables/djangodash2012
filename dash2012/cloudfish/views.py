@@ -9,7 +9,7 @@ from auth.models import Account
 
 def index(request):
     if request.user.is_authenticated():
-        return render(request, 'index_loggedin.html', {'greetings':'Hi!'})
+        return render(request, 'index_loggedin.html', {'greetings': 'Hi!'})
     return render(request, 'index.html')
 
 
@@ -40,6 +40,6 @@ def register(request):
         user = authenticate(username=username, password=password)
         login(request, user)
 
-        return HttpResponseRedirect(reverse("cloudfish.views.index"))
+        return HttpResponseRedirect(reverse("connect-view"))
 
     return render(request, 'register.html', c)
