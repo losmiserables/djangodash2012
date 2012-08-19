@@ -54,9 +54,9 @@ def servers(request):
     user = request.user
     account = Account.objects.get(id=user.id)
     clouds = Cloud.objects.filter(account=account)
-    servers = []
+    servers = {}
     for cloud in clouds:
-        servers += cloud.get_servers(**request.session["clouds"][cloud.type])
+        servers[cloud.type] = cloud.get_servers(**request.session["clouds"][cloud.type])
 
     return render(request, 'servers.html', {'active_servers': 'active', "servers": servers})
 

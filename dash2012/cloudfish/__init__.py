@@ -10,6 +10,6 @@ SUPPORTED_CLOUDS = (
 
 # FIXME: Show all EC2 Regions
 SUPPORTED_PROVIDERS = {
-    CLOUD_AWS: Provider.EC2,
+    CLOUD_AWS: [getattr(Provider, attr) for attr in Provider.__dict__ if attr.startswith("EC2_")],
     CLOUD_RACKSPACE: Provider.RACKSPACE,
 }

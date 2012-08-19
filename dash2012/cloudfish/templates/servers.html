@@ -83,51 +83,55 @@
     </tr>
     </thead>
     <tbody>
-    {%  for server in servers %}
-        {% if server.type == "AM" %}
-            <tr class="amazon-row">
-                <td><span class="amazon-icon"></span></td>
-                <td>{{ server.name }}</td>
-                <td>{{ server.public_ip.0 }}</td>
-                <td>{{ server.image.name }}</td>
-                <td>{{ server.size.ram }}</td>
-                {% if server.state == 0 %}
-                    <td><span class="server-status on">&#9679;</span>Running</td>
-                {% else %}
-                    <td><span class="server-status off">&#9679;</span>Stopped</td>
-                {% endif %}
-                <td>
-                    <div class="server-actions">
-                        <a class="actions-trigger">&#9660;</a>
-                        <ul class="actions-dropdown">
-                            <li><a>Stop</a></li>
-                            <li><a>Remove</a></li>
-                        </ul>
-                    </div>
-                </td>
-            </tr>
-        {%  else %}
-            <tr class="alt rackspace-row">
-                <td><span class="rackspace-icon"></span></td>
-                <td>{{ server.name }}</td>
-                <td>{{ server.public_ip.0 }}</td>
-                <td>{{ server.image.name }}</td>
-                <td>{{ server.size.ram }}</td>
-                {% if server.state == 0 %}
-                    <td><span class="server-status on">&#9679;</span>Running</td>
-                {% else %}
-                    <td><span class="server-status off">&#9679;</span>Stopped</td>
-                {% endif %}
-                <td>
-                    <div class="server-actions">
-                        <a class="actions-trigger">&#9660;</a>
-                        <ul class="actions-dropdown">
-                            <li><a>Stop</a></li>
-                            <li><a>Remove</a></li>
-                        </ul>
-                    </div>
-                </td>
-            </tr>
+    {%  for provider, nodes in servers.items %}
+        {% if provider == "AM" %}
+            {%  for server in nodes %}
+                <tr class="amazon-row">
+                    <td><span class="amazon-icon"></span></td>
+                    <td>{{ server.name }}</td>
+                    <td>{{ server.public_ip.0 }}</td>
+                    <td>{{ server.image.name }}</td>
+                    <td>{{ server.size.ram }}</td>
+                    {% if server.state == 0 %}
+                        <td><span class="server-status on">&#9679;</span>Running</td>
+                    {% else %}
+                        <td><span class="server-status off">&#9679;</span>Stopped</td>
+                    {% endif %}
+                    <td>
+                        <div class="server-actions">
+                            <a class="actions-trigger">&#9660;</a>
+                            <ul class="actions-dropdown">
+                                <li><a>Stop</a></li>
+                                <li><a>Remove</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        {%  elif provider == "RS" %}
+            {%  for server in nodes %}
+                <tr class="alt rackspace-row">
+                    <td><span class="rackspace-icon"></span></td>
+                    <td>{{ server.name }}</td>
+                    <td>{{ server.public_ip.0 }}</td>
+                    <td>{{ server.image.name }}</td>
+                    <td>{{ server.size.ram }}</td>
+                    {% if server.state == 0 %}
+                        <td><span class="server-status on">&#9679;</span>Running</td>
+                    {% else %}
+                        <td><span class="server-status off">&#9679;</span>Stopped</td>
+                    {% endif %}
+                    <td>
+                        <div class="server-actions">
+                            <a class="actions-trigger">&#9660;</a>
+                            <ul class="actions-dropdown">
+                                <li><a>Stop</a></li>
+                                <li><a>Remove</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
     {% endif %}
 
     {%  endfor %}

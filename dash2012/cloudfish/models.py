@@ -1,6 +1,6 @@
 from django.db import models
 from libcloud.compute.providers import get_driver
-from cloudfish import SUPPORTED_CLOUDS, SUPPORTED_PROVIDERS
+from cloudfish import SUPPORTED_CLOUDS, SUPPORTED_PROVIDERS, CLOUD_AWS
 from auth.models import Account
 from django.core import signing
 
@@ -28,10 +28,20 @@ class Cloud(models.Model):
         return signing.loads(self.auth_data, salt=salt)
 
     def get_servers(self, cloud_login, cloud_password):
-        Driver = get_driver(SUPPORTED_PROVIDERS[self.type])
-        conn = Driver(cloud_login, cloud_password)
+        if self.type == CLOUD_AWS:
+            nodes = []
+            for provider in SUPPORTED_PROVIDERS[self.type]:
+                Driver = get_driver(provider)
+                conn = Driver(cloud_login, cloud_password)
+                nodes += conn.list_nodes()
 
-        return conn.list_nodes()
+            return nodes
+
+        else:
+            Driver = get_driver(SUPPORTED_PROVIDERS[self.type])
+            conn = Driver(cloud_login, cloud_password)
+
+            return conn.list_nodes()
 
     def is_valid(self, cloud_login, cloud_password):
         try:
