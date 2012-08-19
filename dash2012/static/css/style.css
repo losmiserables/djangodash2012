@@ -439,15 +439,17 @@ button.blue-btn { float: right; padding: 4px 8px; margin:10px 0 0 0; }
 .connect-clouds {
     width: 442px;
 }
-.connect-clouds .form-row img { margin-right: 42px;}
-.connect-clouds img, .connect-clouds input { float: left; }
+.connect-clouds .form-row img { float: left; margin-right: 42px; margin-top: 34px;}
+.connect-clouds .connect-fields { float: left; }
+.connect-clouds .connect-fields input{ margin-bottom: 15px;}
 
-.connect-clouds .form-row { border-bottom: 1px solid #eee; margin-bottom: 25px; padding-bottom: 25px; }
+.connect-clouds .form-row { border-bottom: 1px solid #eee; margin-bottom: 25px; padding-bottom: 15px; }
 .connect-clouds .btn { margin-top: 10px; }
 
-.connect-clouds .secure-msg { margin-bottom: 30px; }
+.secure-msg { margin-bottom: 30px; }
+.secure-msg img { float: left; }
 
-.connect-clouds .secure-text { float: left; margin: 1px 0 0 10px; }
+.connect-clouds .secure-text { float: left; margin: 1px 0 0 10px; width: 310px; }
 
 
 /* My account */
