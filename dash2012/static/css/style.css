@@ -365,7 +365,7 @@ h4 {font-size: 18px;}
 /* FORM */
 
 .popup-form {
-    width: 230px;
+    width: 270px;
     margin: 0 auto;
 }
 
@@ -380,17 +380,28 @@ h4 {font-size: 18px;}
     float: left;
     font-size: 14px;
     font-weight: bold;
-    margin-right: 17px;
+    margin: 0;
+    padding: 6px 14px 3px 3px;
 }
 
 .create-onservice input[type=radio] {
     float: left;
-    margin-right: 6px;
+    margin: 7px 6px 0px 8px;
 }
 .create-onservice .amazon-icon,
 .create-onservice .rackspace-icon { float:left;  margin-right: 6px; }
 
-.select-onservice { float:left; }
+.select-onservice {
+    background: #eee;
+    float:left;
+
+
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+.select-onservice.amazon-aws { margin-right: 10px; }
+
 .select-onservice .choose-service { float: left; margin-top: -1px; }
 
 /* AUTH */
