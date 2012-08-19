@@ -534,7 +534,7 @@ button.blue-btn { float: right; padding: 4px 8px; margin:10px 0 0 0; }
 .login, .signup {font-size: 18px; text-decoration: none;}
 .login:hover, .signup:hover {color: #44B2CD;}
 
-#home h3 { margin-top: 20px; }
+#home h3 { margin: 20px 0 0; text-align: center; }
 
 .logos {
     float: right;
