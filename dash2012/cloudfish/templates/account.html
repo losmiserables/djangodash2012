@@ -1,60 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <div class="main-account">
 
-    <div id="account-block">
+        <div id="account-block">
 
-        <form action="{% url register-view %}" method="post">
-            <h2>Edit your account</h2>
-            <div class="account-info">
-                <div class="form-row">
-                    <label for="email">E-mail:</label>
-                    <input required type="email" name="email" id="email"/>
+            <form action="{% url register-view %}" method="post">
+                <h2>Edit your account</h2>
+                <div class="account-info">
+                    <div class="form-row">
+                        <label for="email">E-mail:</label>
+                        <input required type="email" name="email" id="email"/>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="password">Password:</label>
+                        <input required type="password" name="password" id="password"/>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="confirm-password">Confirm password:</label>
+                        <input required type="password" name="confirm-password" id="confirm-password"/>
+                    </div>
                 </div>
 
-                <div class="form-row">
-                    <label for="password">Password:</label>
-                    <input required type="password" name="password" id="password"/>
-                </div>
+                <p class="secure-msg">
+                    <img src="{{STATIC_URL}}img/secure.png"/>
+                    <span class="secure-text"> Attention. In case of password change, will be needed to insert cloud keys again.</span>
+                    <span class="clear"></span>
+                </p>
 
-                <div class="form-row">
-                    <label for="confirm-password">Confirm password:</label>
-                    <input required type="password" name="confirm-password" id="confirm-password"/>
-                </div>
-            </div>
+                <button type="submit" name="submit" class="blue-btn">Save</button>
+                <div class="clear"></div>
+            </form>
 
-            <div class="cloud-info connect-clouds">
-
-                <div class="form-row connect-amazon">
-                    <img src="{{STATIC_URL}}img/amazon-aws.png"/>
-                    <label>Your Amazon AWS key:</label>
-                    <input type="text" value=""/>
-                    <div class="clear"></div>
-                </div>
-
-                <div class="form-row connect-rackspace">
-                    <img src="{{STATIC_URL}}img/rackspace.png"/>
-                    <label>Your Rackspace key:</label>
-                    <input type="text" value=""/>
-                    <div class="clear"></div>
-                </div>
-
-
-
-            </div>
-
-            <div class="clear"></div>
-
-            <p class="secure-msg">
-                <img src="{{STATIC_URL}}img/secure.png"/>
-                <span class="secure-text"> Attention. In case of password change, will be needed to insert cloud keys again.</span>
-                <span class="clear"></span>
-            </p>
-
-            <button type="submit" name="submit" class="blue-btn">Save</button>
-            <div class="clear"></div>
-        </form>
-
+        </div>
     </div>
 
 {%  endblock %}
