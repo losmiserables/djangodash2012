@@ -41,7 +41,7 @@ class Cloud(models.Model):
             Driver = get_driver(SUPPORTED_PROVIDERS[self.type])
             conn = Driver(cloud_login, cloud_password)
 
-            return conn.list_nodes()
+            return sorted(conn.list_nodes(), key=lambda item: item.name)
 
     def is_valid(self, cloud_login, cloud_password):
         try:
