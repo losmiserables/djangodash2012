@@ -33,7 +33,7 @@ class Cloud(models.Model):
             for provider in SUPPORTED_PROVIDERS[self.type]:
                 Driver = get_driver(provider)
                 conn = Driver(cloud_login, cloud_password)
-                nodes += conn.list_nodes()
+                nodes += sorted(conn.list_nodes(), key=lambda item: item.name)
 
             return nodes
 
