@@ -98,8 +98,7 @@ h4 {font-size: 18px;}
 }
 
 #footer {
-    padding-top: 30px;
-    width: 100%;
+    padding: 30px 0;
 }
 
 
@@ -107,7 +106,7 @@ h4 {font-size: 18px;}
     border-right: 1px solid #d3d3d3;
     float: left;
     width: 180px;
-    height: 400px;
+    min-height: 400px;
 }
 
 .main-content {
@@ -494,3 +493,18 @@ button.blue-btn { float: right; padding: 4px 8px; margin:10px 0 0 0; }
 .login:hover, .signup:hover {color: #44B2CD;}
 
 #home h3 { margin-top: 20px; }
+
+.logos {
+    float: right;
+    margin-top: 10px;
+}
+.logos li {float: left;}
+.team { float: left; margin-right: 190px; }
+.team a {
+    color: #eee;
+    font-size: 14px;
+    padding: 5px 0;
+    text-decoration: none;
+}
+.team a:hover { color: #fff; text-decoration: underline; }
+#djangodash-logo { float: left; margin-top: 20px;}
