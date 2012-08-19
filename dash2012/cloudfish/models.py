@@ -84,7 +84,9 @@ class Cloud(models.Model):
             image = [img for img in images if img.id==image][0]
             size = [sz for sz in sizes if sz.id==size][0]
             location = [loc for loc in locations if loc.id==location][0]
+
             return conn.create_node(name=name, image=image, size=size, location=location)
+
 
     def stop_server(self, node, cloud_login, cloud_password):
         if self.type == CLOUD_AWS:
@@ -99,7 +101,7 @@ class Cloud(models.Model):
 
             return driver.ex_stop_node(node)
 
-    def start_server(self, node_id, cloud_login, cloud_password):
+    def start_server(self, node, cloud_login, cloud_password):
         if self.type == CLOUD_AWS:
             nodes = []
             for provider in SUPPORTED_PROVIDERS[self.type]:
