@@ -10,7 +10,7 @@
     <form class="popup-form" id="choose-provider">
         <div class="form-row create-onservice">
             <div class="select-onservice">
-                <input type="radio" name="a" class="provider-am"/>
+                <input type="radio" name="a" class="provider-am" disabled="true"/>
                 <label>
                     <span class="amazon-icon"></span>
                     <span class="choose-service">Amazon</span>
@@ -40,20 +40,16 @@
         <div class="form-row">
             <label>Image:</label>
             <select name="image">
-                {% for provider,images in images.AM.items %}
-                    {% for image in images %}
-                        <option value="{{ image.id }}">{{ image.name|truncatechars:30 }}</option>
-                    {% endfor %}
+                {% for image in images.AM %}
+                    <option value="{{ image.id }}">{{ image.name|truncatechars:30 }}</option>
                 {% endfor %}
             </select>
         </div>
         <div class="form-row">
             <label>Size:</label>
             <select name="size">
-                {% for provider,sizes in sizes.items %}
-                    {% for size in sizes %}
-                        <option value="{{ size.id }}">{{ size.name }}</option>
-                    {% endfor %}
+                {% for size in sizes.AM %}
+                    <option value="{{ size.id }}">{{ size.name|truncatechars:30 }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -61,10 +57,8 @@
         <div class="form-row">
             <label>Region:</label>
             <select name="location">
-                {% for provider,locations in regions.items %}
-                    {% for location in locations %}
-                        <option value="{{ location.id }}">{{ location.name }}</option>
-                    {% endfor %}
+                {% for location in regions.AM %}
+                    <option value="{{ location.availability_zone.name }}">{{ location.availability_zone.name }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -88,20 +82,16 @@
         <div class="form-row">
             <label>Image:</label>
             <select name="image">
-                {% for provider,images in images.RS.items %}
-                    {% for image in images %}
-                        <option value="{{ image.id }}">{{ image.name|truncatechars:30 }}</option>
-                    {% endfor %}
+                {% for image in images.RS %}
+                    <option value="{{ image.id }}">{{ image.name|truncatechars:30 }}</option>
                 {% endfor %}
             </select>
         </div>
         <div class="form-row">
             <label>Size:</label>
             <select name="size">
-                {% for provider,sizes in sizes.items %}
-                    {% for size in sizes %}
-                        <option value="{{ size.id }}">{{ size.name|truncatechars:30 }}</option>
-                    {% endfor %}
+                {% for size in sizes.RS %}
+                    <option value="{{ size.id }}">{{ size.name|truncatechars:30 }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -109,18 +99,11 @@
         <div class="form-row">
             <label>Region:</label>
             <select name="location">
-                {% for provider,locations in regions.items %}
-                    {% for location in locations %}
-                        {% if provider == "AM" %}
-                            <option value="{{ location.availability_zone.name }}">{{ location.availability_zone.name }}</option>
-                            {% else %}
-                            <option value="{{ location.name }}">{{ location.name }}</option>
-                        {% endif %}
-                    {% endfor %}
+                {% for location in regions.RS %}
+                    <option value="{{ location.name }}">{{ location.name }}</option>
                 {% endfor %}
             </select>
         </div>
-
         <div class="popup-actions">
             <button type="submit" class="popup-save blue-btn">Add</button>
             <div class="clear"></div>
