@@ -160,3 +160,7 @@ def disconnect(request):
     if Cloud.objects.filter(type=cloud, account=account).exists():
         Cloud.objects.filter(type=cloud, account=account).delete()
     return HttpResponseRedirect(reverse('connect-view'))
+
+
+def notfound(request):
+    return render(request, '404.html')

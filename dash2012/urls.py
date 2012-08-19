@@ -10,3 +10,5 @@ urlpatterns = patterns('',
 
 
 )
+
+handler_404 = 'cloudfish.views.notfound'
