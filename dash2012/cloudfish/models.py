@@ -98,3 +98,16 @@ class Cloud(models.Model):
             driver = node.driver
 
             return driver.ex_stop_node(node)
+
+    def start_server(self, node_id, cloud_login, cloud_password):
+        if self.type == CLOUD_AWS:
+            nodes = []
+            for provider in SUPPORTED_PROVIDERS[self.type]:
+                Driver = get_driver(provider)
+                conn = Driver(cloud_login, cloud_password)
+                nodes += sorted(conn.list_nodes(), key=lambda item: item.name)
+
+            node = [nd for nd in nodes if nd.id == node][0]
+            driver = node.driver
+
+            return driver.ex_start_node(node)

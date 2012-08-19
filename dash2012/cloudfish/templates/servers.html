@@ -120,7 +120,7 @@
                                 {% if server.state == 0 %}
                                     <li><a href="{% url stop-server provider server.id %}">Stop</a></li>
                                 {% else %}
-                                    <li><a>Start</a></li>
+                                    <li><a href="{% url start-server provider server.id %}">Start</a></li>
                                 {% endif %}
                                 <li><a>Remove</a></li>
                             </ul>

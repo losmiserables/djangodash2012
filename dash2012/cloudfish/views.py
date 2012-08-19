@@ -186,6 +186,7 @@ def create(request):
 
         return render(request, "servers.html", c)
 
+
 @login_required
 def stop(request, provider, node_id):
     credentials = request.session["clouds"][provider]
@@ -195,3 +196,12 @@ def stop(request, provider, node_id):
 
     return render(request, "servers.html")
 
+
+@login_required
+def start(request, provider, node_id):
+    credentials = request.session["clouds"][provider]
+    account = Account.objects.get(id=request.user.id)
+    cloud = Cloud.objects.filter(account=account, type=provider)[0]
+    cloud.start_server(node_id, **credentials)
+
+    return render(request, "servers.html")
