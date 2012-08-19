@@ -15,7 +15,6 @@ class Cloud(models.Model):
 
     account = models.ForeignKey(Account, related_name='clouds')
 
-
     def add_auth_data(self, salt, **kwargs):
         """
         Build a JSON object with all **kwargs and then

@@ -6,11 +6,23 @@
     <div class="auth-block connect-clouds">
 
       <h1>Connect your clouds</h1>
-        {% if msgs %}
-        <div class="feedback success">
-          <span>{{ msgs }}</span>
+
+        {% if errors %}
+        <div class="feedback error">
+          {% for e in errors %}
+          <span>{{ e }}</span> <br/>
+          {% endfor %}
           </div>
         {% endif %}
+
+        {% if msgs %}
+        <div class="feedback success">
+          {% for m in msgs %}
+          <span>{{ m }}</span> <br/>
+          {% endfor %}
+          </div>
+        {% endif %}
+
 
         <form action="{% url connect-view %}" method="POST">
             {% csrf_token %}
