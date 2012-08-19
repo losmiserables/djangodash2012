@@ -103,7 +103,7 @@ def connect(request):
         if "aws_key_id" in request.POST and request.POST["aws_key_id"]:
             aws_key_id = request.POST["aws_key_id"]
             aws_secret_key = request.POST["aws_secret_key"]
-            cloud = Cloud(type=CLOUD_AWS, account=account)
+            cloud, _ = Cloud.objects.get_or_create(type=CLOUD_AWS, account=account)
             cloud.add_auth_data(salt=passwd, cloud_login=aws_key_id, cloud_password=aws_secret_key)
             if not cloud.is_valid(cloud_login=aws_key_id, cloud_password=aws_secret_key):
                 c['errors'].append("Invalid credentials for Amazon AWS, please check")
@@ -114,7 +114,7 @@ def connect(request):
         if "rackspace_username" in request.POST and request.POST["rackspace_username"]:
             rackspace_username = request.POST["rackspace_username"]
             rackspace_api_key = request.POST["rackspace_api_key"]
-            cloud = Cloud(type=CLOUD_RACKSPACE, account=account)
+            cloud, _ = Cloud.objects.get_or_create(type=CLOUD_RACKSPACE, account=account)
             cloud.add_auth_data(salt=passwd, cloud_login=rackspace_username, cloud_password=rackspace_api_key)
             if not cloud.is_valid(cloud_login=rackspace_username, cloud_password=rackspace_api_key):
                 c['errors'].append("Invalid credentials for Rackspace Open Cloud, please check.")
