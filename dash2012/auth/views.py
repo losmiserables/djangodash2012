@@ -7,6 +7,7 @@ from cloudfish.models import Cloud
 
 
 def login(r):
+    c = {}
     if r.POST:
         username = r.POST['username']
         password = r.POST['password']
@@ -19,7 +20,8 @@ def login(r):
 
             return HttpResponseRedirect(reverse('myservers-view'))
 
-    return render(r, 'auth.html')
+    c['errors'] = "Login failed, please try again"
+    return render(r, 'auth.html', c)
 
 
 def logout(request):
