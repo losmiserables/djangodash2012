@@ -106,12 +106,12 @@ h4 {font-size: 18px;}
 .sidebar {
     float: left;
     width: 180px;
-    min-height: 400px;
 }
 
 .main-content {
     border-left: 1px solid #d3d3d3;
     float: left;
+    min-height: 278px;
     padding-left: 10px;
     width: 769px;
 }
@@ -355,7 +355,7 @@ h4 {font-size: 18px;}
 
 .popup-actions { float: right; margin: 20px 0 10px;}
 .popup-actions .blue-btn {margin-right: 0;}
-
+.popup-cancel {margin-top: 10px; }
 
 /* FORM */
 
