@@ -29,3 +29,8 @@ What's not
 ==========
 
  * It's not possible (yet!) to create a new server at Amazon Aws.
+
+How can I use it?
+=================
+
+Head to http://djangodash2012.daltonmatos.com and create your account.
